@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.mbds.appsmartfridge.Main2Activity">
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="30dp">
+
+        <ImageButton
+            android:id="@+id/fab"
+            android:layout_width="40dp"
+            android:layout_height="30dp"
+            android:layout_gravity="bottom|end"
+            android:layout_margin="@dimen/fab_margin"
+            app:srcCompat="@android:drawable/ic_dialog_alert"
+            android:layout_marginRight="10dp"/>
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:id="@+id/titre"
+        android:text="Alerte: la date de péremption"
+        android:textColor="#DAA520"
+        android:textSize="18dp"
+        android:textStyle="bold"/>
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:layout_marginTop="50dp">
+         <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+             android:layout_marginTop="50dp">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/jourtext"
+                android:text="Jour:"
+                android:textColorHint="#000"
+                android:textSize="22dp" />
+
+             <EditText android:id="@+id/jour"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:hint="JJ"
+                android:paddingLeft="10dp"
+                android:textColorHint="#000"
+                android:textSize="22dp"
+                android:background="@drawable/border"
+                android:layout_marginLeft="50dp"/>
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/moistext"
+                android:text="Mois:"
+                android:textColorHint="#000"
+                android:textSize="22dp"
+                android:layout_marginTop="50dp" />
+
+            <EditText android:id="@+id/mois"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:paddingLeft="10dp"
+                android:textColorHint="#000"
+                android:textSize="22dp"
+                android:background="@drawable/border"
+                android:hint="MM"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="50dp"
+                />
+
+        </LinearLayout>
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            >
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:id="@+id/annetext"
+                android:text="Année:"
+                android:textColorHint="#000"
+                android:textSize="22dp"
+                android:layout_marginTop="50dp"/>
+            <EditText android:id="@+id/annee"
+                android:layout_width="250dp"
+                android:layout_height="40dp"
+                android:paddingLeft="10dp"
+                android:textColorHint="#000"
+                android:textSize="22dp"
+                android:background="@drawable/border"
+                android:hint="AAAA"
+                android:layout_marginTop="50dp"
+                android:layout_marginLeft="50dp"/>
+
+        </LinearLayout>
+
+
+
+        <Button android:id="@+id/ajout"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="ajouter"
+            android:layout_marginTop="50dp"
+            />
+    </LinearLayout>
+
+</android.support.constraint.ConstraintLayout>
