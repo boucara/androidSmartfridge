@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="fr.com.mbds.smartfridge.FrigoCarac">
+
+
+    <ImageView
+        android:id="@+id/iconDate"
+        android:layout_width="56dp"
+        android:layout_height="51dp"
+        app:srcCompat="@drawable/ic_date"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="163dp" />
+
+    <ImageView
+        android:id="@+id/iconHumidity"
+        android:layout_width="58dp"
+        android:layout_height="57dp"
+        app:srcCompat="@drawable/ic_humidite"
+        tools:layout_editor_absoluteX="42dp"
+        tools:layout_editor_absoluteY="326dp" />
+
+    <ImageView
+        android:id="@+id/iconTemp"
+        android:layout_width="105dp"
+        android:layout_height="63dp"
+        app:srcCompat="@drawable/ic_temperature"
+        tools:layout_editor_absoluteX="16dp"
+        tools:layout_editor_absoluteY="239dp" />
+</RelativeLayout>
