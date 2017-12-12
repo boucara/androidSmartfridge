@@ -14,15 +14,19 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.SeekBar;
 import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
+
+import com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar;
 
 public class Main2Activity extends AppCompatActivity {
     TextView titre  ;
     Button buttonDate;
     EditText nomAlerte;
-
+    com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar seekBar;
+    SeekBar mySeekbar;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
@@ -48,6 +52,9 @@ public class Main2Activity extends AppCompatActivity {
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate(year, month+1, day);
 
+        seekBar=( com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar)findViewById(R.id.rangeSeekbar);
+        mySeekbar =(SeekBar)findViewById(R.id.seek1);
+
         Spinner spinner_Alerte = (Spinner) findViewById(R.id.spinner);
         String[] items = new String[] { "temperature", "decomposition", "porte" , "hygrometrie","péremption" };
         ArrayAdapter<String> adapter_Alerte = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
@@ -58,36 +65,49 @@ public class Main2Activity extends AppCompatActivity {
                 Log.v("item", (String) parent.getItemAtPosition(position));
                 String alerte=(String) parent.getItemAtPosition(position);
 
-                if(alerte.equalsIgnoreCase("temperature")||alerte.equalsIgnoreCase("decomposition")|| alerte.equalsIgnoreCase("porte")||alerte.equalsIgnoreCase("hygrometrie")){
-
+                if(alerte.equalsIgnoreCase("temperature")){
+                    nomAlerte.setVisibility(View.VISIBLE);
+                    seekBar.setVisibility(View.VISIBLE);
                     buttonDate.setVisibility(View.INVISIBLE);
                     dateView.setVisibility(View.INVISIBLE);
-                    nomAlerte.setVisibility(View.INVISIBLE);
+                    mySeekbar.setVisibility(View.INVISIBLE);
 
                 }
+
                 else if(alerte.equalsIgnoreCase("decomposition")){
+                    nomAlerte.setVisibility(View.VISIBLE);
+                    seekBar.setVisibility(View.INVISIBLE);
+                    buttonDate.setVisibility(View.INVISIBLE);
+                    dateView.setVisibility(View.INVISIBLE);
+                    mySeekbar.setVisibility(View.VISIBLE);
+
 
                 }
                 else if(alerte.equalsIgnoreCase("porte")){
+                    nomAlerte.setVisibility(View.VISIBLE);
+                    seekBar.setVisibility(View.INVISIBLE);
+                    buttonDate.setVisibility(View.INVISIBLE);
+                    dateView.setVisibility(View.INVISIBLE);
+                    mySeekbar.setVisibility(View.INVISIBLE);
+
 
                 }
                else if(alerte.equalsIgnoreCase("hygrometrie")){
+                    seekBar.setVisibility(View.VISIBLE);
+                    buttonDate.setVisibility(View.INVISIBLE);
+                    dateView.setVisibility(View.INVISIBLE);
+                    nomAlerte.setVisibility(View.VISIBLE);
+                    mySeekbar.setVisibility(View.INVISIBLE);
 
                 }
-                else if(alerte.equalsIgnoreCase("péremption")){
+                else if(alerte.equalsIgnoreCase("péremption")) {
 
                     buttonDate.setVisibility(View.VISIBLE);
                     dateView.setVisibility(View.VISIBLE);
                     nomAlerte.setVisibility(View.VISIBLE);
-
-
+                    seekBar.setVisibility(View.INVISIBLE);
+                    mySeekbar.setVisibility(View.INVISIBLE);
                 }
-
-
-
-
-
-
             }
 
             @Override
@@ -95,6 +115,17 @@ public class Main2Activity extends AppCompatActivity {
 
             }
         });
+
+        seekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
+            @Override
+            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+                //Now you have the minValue and maxValue of your RangeSeekbar
+                Toast.makeText(getApplicationContext(), minValue + "-" + maxValue, Toast.LENGTH_LONG).show();
+            }
+        });
+
+// Get noticed while dragging
+        seekBar.setNotifyWhileDragging(true);
     }
     @SuppressWarnings("deprecation")
     public void setDate(View view) {
@@ -131,4 +162,5 @@ public class Main2Activity extends AppCompatActivity {
         dateView.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
+
 }
