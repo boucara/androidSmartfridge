@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="mbds.smartfridge.MainActivity">
+
+    <ImageButton
+        android:id="@+id/imageButton"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_smartfrigo_large"
+        android:layout_marginStart="34dp"
+        android:layout_marginBottom="69dp"
+        android:layout_above="@+id/imageButton4"
+        android:layout_alignParentStart="true" />
+
+    <ImageButton
+        android:id="@+id/imageButton3"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_alignTop="@+id/imageButton"
+        android:layout_marginStart="16dp"
+        android:layout_toEndOf="@+id/imageButton"
+        android:src="@drawable/ic_produits" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_settings"
+        android:layout_marginBottom="55dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignStart="@+id/frigos" />
+
+    <ImageButton
+        android:id="@+id/imageButton5"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:src="@drawable/ic_info"
+        android:layout_alignTop="@+id/imageButton4"
+        android:layout_alignStart="@+id/imageButton3" />
+
+    <TextView
+        android:id="@+id/frigos"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Frigos Connectés"
+        android:layout_above="@+id/imageButton3"
+        android:layout_alignStart="@+id/imageButton" />
+
+    <TextView
+        android:id="@+id/all_produits"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton3"
+        android:layout_alignStart="@+id/imageButton3"
+        android:text="Produits" />
+
+    <TextView
+        android:id="@+id/parametres"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton4"
+        android:layout_alignStart="@+id/imageButton4"
+        android:text="Paramètres" />
+
+    <TextView
+        android:id="@+id/about"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton5"
+        android:layout_alignStart="@+id/imageButton5"
+        android:text="About" />
+
+    <TextView
+        android:id="@+id/contactUs"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="11dp"
+        android:text="Nous contacter" />
+
+</RelativeLayout>
