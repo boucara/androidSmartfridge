@@ -4,5 +4,10 @@
     <string name="app_name">AppSmartFridge</string>
     <string name="action_settings">Settings</string>
     <string name="date_selected"></string>
+	<string name="frigoPhoto">frigoPhoto</string>
+    <string name="D">D</string>
+    <string name="C">C</string>
+    <string name="produitPhoto">produitPhoto</string>
+    <string name="title_activity_prods">ActivityProds</string>
 
 </resources>

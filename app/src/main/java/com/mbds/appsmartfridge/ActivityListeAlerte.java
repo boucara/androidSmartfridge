@@ -3,9 +3,7 @@ package com.mbds.appsmartfridge;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
-import android.support.v7.widget.Toolbar;
 import android.util.Log;
 import android.view.View;
 import android.view.Menu;
@@ -15,10 +13,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
 
-import com.mbds.appsmartfridge.Main2Activity;
-import com.mbds.appsmartfridge.R;
-
-public class MainActivity extends AppCompatActivity {
+public class ActivityListeAlerte extends AppCompatActivity {
     ListView mListView;
     String[] alertes_temperature = new String[]{"temp-alert1","temp-alert2","temp-alerte3","temp-alerte4","temp-alerte5","temp-alert6","temp-alert7"};
     String[] alertes_decomposition = new String[]{"gaz-alert1","gaz-alert2","gaz-alerte3","gaz-alerte4","gaz-alerte5","gaz-alert6","gaz-alert7"};
@@ -32,13 +27,13 @@ public class MainActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.activity_main_liste_alerte);
 
         fab= (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(MainActivity.this,Main2Activity.class);
+                Intent intent = new Intent(ActivityListeAlerte.this,ActivityAddAlerte.class);
                 startActivityForResult(intent,ok_ann);
             }
         });
@@ -56,31 +51,31 @@ public class MainActivity extends AppCompatActivity {
                 String alerte=(String) parent.getItemAtPosition(position);
                 if(alerte.equalsIgnoreCase("Alerte temperature")){
 
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_temperature);
                     mListView.setAdapter(adapter);
                 }
                else if(alerte.equalsIgnoreCase("Alerte decomposition")){
 
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_decomposition);
                     mListView.setAdapter(adapter);
                 }
                else if(alerte.equalsIgnoreCase("Alerte porte")){
 
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_porte);
                     mListView.setAdapter(adapter);
                 }
                 else if(alerte.equalsIgnoreCase("Alerte hygrometrie")){
 
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_hygrometrie);
                     mListView.setAdapter(adapter);
                 }
                 else if(alerte.equalsIgnoreCase("Alerte péremption")){
 
-                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(MainActivity.this,
+                    final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_peremption);
                     mListView.setAdapter(adapter);
                 }

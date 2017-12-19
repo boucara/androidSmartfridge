@@ -10,16 +10,30 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".MainActivity"
+            android:name=".ActivityListeAlerte"
             android:label="@string/app_name"
             android:theme="@style/AppTheme.NoActionBar">
+        </activity>
+		<activity
+            android:name=".ActivityAccueil"
+            android:label="@string/app_name">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Main2Activity"></activity>
+        <activity
+            android:name="com.mbds.appsmartfridge.ActivityFrigos"
+            android:parentActivityName="com.mbds.appsmartfridge.ActivityAccueil" />
+        <activity
+            android:name="com.mbds.appsmartfridge.ActivityProduits"
+            android:parentActivityName="com.mbds.appsmartfridge.ActivityAccueil" />
+        <activity
+            android:name="com.mbds.appsmartfridge.ActivityFrigo"
+            android:parentActivityName="com.mbds.appsmartfridge.ActivityFrigos" />
+        <activity android:name="com.mbds.appsmartfridge.ActivityProduit"></activity>
+        <activity android:name=".ActivityAddAlerte"></activity>
     </application>
 
 </manifest>

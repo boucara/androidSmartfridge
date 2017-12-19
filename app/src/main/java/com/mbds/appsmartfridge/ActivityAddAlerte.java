@@ -21,7 +21,7 @@ import android.widget.Toast;
 
 import com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar;
 
-public class Main2Activity extends AppCompatActivity {
+public class ActivityAddAlerte extends AppCompatActivity {
     TextView titre  ;
     Button buttonDate;
     EditText nomAlerte;
@@ -35,7 +35,7 @@ public class Main2Activity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main_add_alerte);
 
         titre=(TextView)findViewById(R.id.titre);
         //titre.setVisibility(View.INVISIBLE);
