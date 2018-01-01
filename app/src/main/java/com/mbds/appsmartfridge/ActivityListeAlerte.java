@@ -12,6 +12,7 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.TextView;
 
 public class ActivityListeAlerte extends AppCompatActivity {
     ListView mListView;
@@ -24,10 +25,13 @@ public class ActivityListeAlerte extends AppCompatActivity {
 
     FloatingActionButton fab;
     int ok_ann=1;
+    TextView titre;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_liste_alerte);
+
+        titre= (TextView) findViewById(R.id.titre) ;
 
         fab= (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -41,7 +45,7 @@ public class ActivityListeAlerte extends AppCompatActivity {
         Spinner spinner_Alerte = (Spinner) findViewById(R.id.spinner);
         String[] items = new String[] { "Alerte temperature", "Alerte decomposition", "Alerte porte" , "Alerte hygrometrie","Alerte péremption" };
         ArrayAdapter<String> adapter_Alerte = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
-
+        adapter_Alerte.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner_Alerte.setAdapter(adapter_Alerte);
         spinner_Alerte.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -54,30 +58,35 @@ public class ActivityListeAlerte extends AppCompatActivity {
                     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_temperature);
                     mListView.setAdapter(adapter);
+                    titre.setText("Les alertes associées à la temperature");
                 }
                else if(alerte.equalsIgnoreCase("Alerte decomposition")){
 
                     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_decomposition);
                     mListView.setAdapter(adapter);
+                    titre.setText("Les alertes associées à la decomposition");
                 }
                else if(alerte.equalsIgnoreCase("Alerte porte")){
 
                     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_porte);
                     mListView.setAdapter(adapter);
+                    titre.setText("Les alertes associées à la porte");
                 }
                 else if(alerte.equalsIgnoreCase("Alerte hygrometrie")){
 
                     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_hygrometrie);
                     mListView.setAdapter(adapter);
+                    titre.setText("Les alertes associées à l'hygrometrie");
                 }
                 else if(alerte.equalsIgnoreCase("Alerte péremption")){
 
                     final ArrayAdapter<String> adapter = new ArrayAdapter<String>(ActivityListeAlerte.this,
                             android.R.layout.simple_list_item_1, alertes_peremption);
                     mListView.setAdapter(adapter);
+                    titre.setText("Les alertes associées à la péremption");
                 }
             }
 
@@ -86,6 +95,7 @@ public class ActivityListeAlerte extends AppCompatActivity {
                 // TODO Auto-generated method stub
             }
         });
+
 
     }
 
