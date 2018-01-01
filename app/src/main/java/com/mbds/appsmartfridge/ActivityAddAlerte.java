@@ -52,36 +52,58 @@ public class ActivityAddAlerte extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                AlertDialog.Builder  alertDialogBuilder = new AlertDialog.Builder(context);
-                // set title
-                alertDialogBuilder.setTitle("Ajout alerte");
 
-                // set dialog message
-                alertDialogBuilder
-                        .setMessage("voulez vous confirmer?")
-                        .setCancelable(false)
-                        .setPositiveButton("Oui",new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                // if this button is clicked, close
-                                // current activity
-                               ActivityAddAlerte.this.finish();
-                            }
-                        })
-                        .setNegativeButton("Non",new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog,int id) {
-                                // if this button is clicked, just close
-                                // the dialog box and do nothing
-                                dialog.cancel();
-                            }
-                        });
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                //System.out.print("text alerte"+nomAlerte.getText());
 
-                // create alert dialog
-                AlertDialog alertDialog = alertDialogBuilder.create();
+                    // set title
+                if(!nomAlerte.getText().toString().equals(" ")&& nomAlerte.getText().toString()!=null) {
+                    alertDialogBuilder.setTitle("Ajout alerte");
 
-                // show it
-                alertDialog.show();
-              //  Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
-               // startActivityForResult(intent,1 );
+                    // set dialog message
+                    alertDialogBuilder
+                            .setMessage("voulez vous confirmer?")
+                            .setCancelable(false)
+                            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, close
+                                    // current activity
+                                    ActivityAddAlerte.this.finish();
+                                }
+                            })
+                            .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, just close
+                                    // the dialog box and do nothing
+                                    dialog.cancel();
+                                }
+                            });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                    //  Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
+                    // startActivityForResult(intent,1 );
+                }
+                else{
+                    alertDialogBuilder
+                            .setMessage("veuillez saisir le nom de l'alerte")
+                            .setCancelable(false)
+                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, close
+                                    // current activity
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                }
+
             }
         });
 
