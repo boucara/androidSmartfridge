@@ -39,6 +39,8 @@ public class ActivityAddAlerte extends AppCompatActivity {
     private TextView dateView;
     private int year, month, day;
     final Context context = this;
+
+    static final int LONG_DELAY = 3500;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +48,8 @@ public class ActivityAddAlerte extends AppCompatActivity {
         setContentView(R.layout.activity_main_add_alerte);
 
         titre=(TextView)findViewById(R.id.titre);
+        nomAlerte=(EditText)findViewById(R.id.nom);
+
         //titre.setVisibility(View.INVISIBLE);
         ajout=(Button) findViewById(R.id.ajout) ;
         ajout.setOnClickListener(new View.OnClickListener() {
@@ -53,11 +57,21 @@ public class ActivityAddAlerte extends AppCompatActivity {
             public void onClick(View view) {
 
 
+                if(nomAlerte.getText().toString().matches(" ") || nomAlerte.getText().toString().isEmpty() || nomAlerte.getText().toString().equals("\t")){
+                    Toast.makeText(context, "vous devez renseigner le nom de l'alerte!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if(!nomAlerte.getText().toString().contains("_")){
+                    Toast.makeText(context, "Saisie incorrecte , respectez les consignes de nommages!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            else{
+
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                //System.out.print("text alerte"+nomAlerte.getText());
+                    //System.out.print("text alerte"+nomAlerte.getText());
 
                     // set title
-                if(!nomAlerte.getText().toString().equals(" ")&& nomAlerte.getText().toString()!=null) {
+
                     alertDialogBuilder.setTitle("Ajout alerte");
 
                     // set dialog message
@@ -68,7 +82,13 @@ public class ActivityAddAlerte extends AppCompatActivity {
                                 public void onClick(DialogInterface dialog, int id) {
                                     // if this button is clicked, close
                                     // current activity
-                                    ActivityAddAlerte.this.finish();
+                                    Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
+
+
+                                    intent.putExtra("name",nomAlerte.getText().toString());
+                                    setResult(1, intent);
+                                    finish();
+                                    //ActivityAddAlerte.this.finish();
                                 }
                             })
                             .setNegativeButton("Non", new DialogInterface.OnClickListener() {
@@ -86,29 +106,18 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     alertDialog.show();
                     //  Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
                     // startActivityForResult(intent,1 );
-                }
-                else{
-                    alertDialogBuilder
-                            .setMessage("veuillez saisir le nom de l'alerte")
-                            .setCancelable(false)
-                            .setPositiveButton("OK", new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    // if this button is clicked, close
-                                    // current activity
-                                    dialog.cancel();
-                                }
-                            });
-                    AlertDialog alertDialog = alertDialogBuilder.create();
 
-                    // show it
-                    alertDialog.show();
+
+
                 }
+
+
+
 
             }
         });
 
         buttonDate=(Button)findViewById(R.id.buttondate);
-        nomAlerte=(EditText)findViewById(R.id.nom);
 
 
         dateView = (TextView) findViewById(R.id.textView3);
@@ -217,7 +226,8 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     nomAlerte.setVisibility(View.VISIBLE);
                     nomAlerte.setHint("Example: Hygro_myalerte");
                     mySeekbar.setVisibility(View.INVISIBLE);
-                    titre.setText(" Alerte Hygrometrie");
+                   // titre.setText(" Alerte Hygrometrie");
+                    titre.setText(" Alerte Hygrométrie");
                     customSeekBar.setVisibility(View.INVISIBLE);
 
 

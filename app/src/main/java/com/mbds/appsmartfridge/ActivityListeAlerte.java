@@ -12,24 +12,32 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
+import android.widget.Switch;
 import android.widget.TextView;
+
+import java.util.ArrayList;
 
 public class ActivityListeAlerte extends AppCompatActivity {
     ListView mListView;
-    String[] alertes_temperature = new String[]{"temp-alert1","temp-alert2","temp-alerte3","temp-alerte4","temp-alerte5","temp-alert6","temp-alert7"};
-    String[] alertes_decomposition = new String[]{"gaz-alert1","gaz-alert2","gaz-alerte3","gaz-alerte4","gaz-alerte5","gaz-alert6","gaz-alert7"};
-    String[] alertes_porte = new String[]{"porte-alert1","porte-alert2","porte-alerte3","porte-alerte4","porte-alert5","porte-alert6","porte-alert7"};
-    String[] alertes_hygrometrie = new String[]{"hygro-alert1","hygro-alert2","hygo-alerte3","hygro-alerte4","hygro-alert5","hygro-alert6","hygro-alert7"};
-    String[] alertes_peremption= new String[]{"exp-alert1","exp-alert2","exp-alerte3","exp-alerte4","exp-alert5","exp-alert6","exp-alert7" ,"exp-alert7","exp-alert7"
-            ,"exp-alert7","exp-alert7","exp-alert7","exp-alert7","exp-alert7","exp-alert7","exp-alert7","exp-alert7","exp-alert7"};
+    ArrayList<String> alertes_temperature = new ArrayList<String>();
+    ArrayList<String> alertes_decomposition = new ArrayList<String>();
+    ArrayList<String> alertes_porte = new ArrayList<String>();
+    ArrayList<String> alertes_peremption = new ArrayList<String>();
+    ArrayList<String> alertes_global = new ArrayList<String>();
+    ArrayList<String> alertes_hygrometrie  = new ArrayList<String>();
+    //initialisation
+
+
 
     FloatingActionButton fab;
     int ok_ann=1;
     TextView titre;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main_liste_alerte);
+        initialise();
 
         titre= (TextView) findViewById(R.id.titre) ;
 
@@ -108,9 +116,7 @@ public class ActivityListeAlerte extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
+
         int id = item.getItemId();
 
         //noinspection SimplifiableIfStatement
@@ -120,4 +126,68 @@ public class ActivityListeAlerte extends AppCompatActivity {
 
         return super.onOptionsItemSelected(item);
     }
+    @Override
+    protected  void onActivityResult(int requestCode , int resultCode ,  Intent data){
+        super.onActivityResult(requestCode ,resultCode ,data);
+      if(resultCode==1){
+          String myString = data.getStringExtra("name");
+          String[] tabNomAlerte = myString.split("_");
+          if(tabNomAlerte[0].equalsIgnoreCase("Temp"))
+              alertes_temperature.add(myString);
+
+          else if(tabNomAlerte[0].equalsIgnoreCase("Decomp"))
+              alertes_decomposition.add(myString);
+          else if(tabNomAlerte[0].equalsIgnoreCase("Porte"))
+              alertes_porte.add(myString);
+          else if(tabNomAlerte[0].equalsIgnoreCase("Hygro"))
+              alertes_hygrometrie.add(myString);
+          else if(tabNomAlerte[0].equalsIgnoreCase("Péremp"))
+              alertes_peremption.add(myString);
+
+          }
+
+
+
+
+      }
+
+    public void initialise(){
+        alertes_decomposition.add("Decomp_alert1");
+        alertes_decomposition.add("Decomp_alert2");
+        alertes_decomposition.add("Decomp_alert3");
+        alertes_decomposition.add("Decomp_alert4");
+        alertes_decomposition.add("Decomp_alert5");
+
+        alertes_peremption.add("Péremp_alert1");
+        alertes_peremption.add("Péremp_alert2");
+        alertes_peremption.add("Péremp_alert3");
+        alertes_peremption.add("Péremp_alert4");
+        alertes_peremption.add("Péremp_alert5");
+
+        alertes_porte.add("Porte_alerte1");
+        alertes_porte.add("Porte_alerte2");
+        alertes_porte.add("Porte_alerte3");
+        alertes_porte.add("Porte_alerte4");
+        alertes_porte.add("Porte_alerte5");
+
+        alertes_temperature.add("Temp_alert1");
+        alertes_temperature.add("Temp_alert2");
+        alertes_temperature.add("Temp_alert3");
+        alertes_temperature.add("Temp_alert4");
+        alertes_temperature.add("Temp_alert5");
+
+        alertes_hygrometrie.add("Hygro_alerte1");
+        alertes_hygrometrie.add("Hygro_alerte2");
+        alertes_hygrometrie.add("Hygro_alerte3");
+        alertes_hygrometrie.add("Hygro_alerte4");
+        alertes_hygrometrie.add("Hygro_alerte5");
+
+        alertes_global.add("Decomp_alert1");
+        alertes_global.add("Temp_alert1");
+        alertes_global.add("Péremp_alert1");
+        alertes_global.add("Porte_alert1");
+
+    }
+
 }
+
