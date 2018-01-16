@@ -70,5 +70,14 @@ public class ActivityFrigo extends AppCompatActivity {
                 startActivity(i);
             }
         });
+        caracts.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                //Bundle args = new Bundle();
+                //args.putSerializable("frigo",f);
+                Intent i=new Intent(ActivityFrigo.this,ActivityCaracteristiques.class);
+                startActivity(i);
+            }
+        });
     }
 }
