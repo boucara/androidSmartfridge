@@ -12,9 +12,8 @@
         <activity
             android:name=".ActivityListeAlerte"
             android:label="@string/app_name"
-            android:theme="@style/AppTheme.NoActionBar">
-        </activity>
-		<activity
+            android:theme="@style/AppTheme.NoActionBar"></activity>
+        <activity
             android:name=".ActivityAccueil"
             android:label="@string/app_name">
             <intent-filter>
@@ -24,16 +23,17 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.mbds.appsmartfridge.ActivityFrigos"
-            android:parentActivityName="com.mbds.appsmartfridge.ActivityAccueil" />
+            android:name=".ActivityFrigos"
+            android:parentActivityName=".ActivityAccueil" />
         <activity
-            android:name="com.mbds.appsmartfridge.ActivityProduits"
-            android:parentActivityName="com.mbds.appsmartfridge.ActivityAccueil" />
+            android:name=".ActivityProduits"
+            android:parentActivityName=".ActivityAccueil" />
         <activity
-            android:name="com.mbds.appsmartfridge.ActivityFrigo"
-            android:parentActivityName="com.mbds.appsmartfridge.ActivityFrigos" />
-        <activity android:name="com.mbds.appsmartfridge.ActivityProduit"></activity>
-        <activity android:name=".ActivityAddAlerte"></activity>
+            android:name=".ActivityFrigo"
+            android:parentActivityName=".ActivityFrigos" />
+        <activity android:name=".ActivityProduit" />
+        <activity android:name=".ActivityAddAlerte" />
+        <activity android:name=".AProposActivity"></activity>
     </application>
 
 </manifest>

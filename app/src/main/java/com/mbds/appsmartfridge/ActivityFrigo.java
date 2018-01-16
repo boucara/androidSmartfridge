@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -21,9 +22,9 @@ public class ActivityFrigo extends AppCompatActivity {
     TextView decomp_t;
     TextView humid_t;
     TextView status_t;
-    TextView liste_prod;
-    TextView caracts;
-    TextView alertes;
+    Button liste_prod;
+    Button caracts;
+    Button alertes;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,9 +39,9 @@ public class ActivityFrigo extends AppCompatActivity {
         decomp_t=(TextView)findViewById(R.id.decompositionData);
         humid_t=(TextView)findViewById(R.id.humiditeData);
         status_t=(TextView)findViewById(R.id.statusData);
-        liste_prod=(TextView)findViewById(R.id.liste);
-        caracts=(TextView)findViewById(R.id.carac);
-        alertes=(TextView)findViewById(R.id.alertes);
+        liste_prod=(Button) findViewById(R.id.butProd);
+        caracts=(Button) findViewById(R.id.butCaract);
+        alertes=(Button) findViewById(R.id.buttAlertes);
 
         Intent i = getIntent();
         Frigo frigo = (Frigo)i.getSerializableExtra("frigo");

@@ -28,80 +28,47 @@
         android:layout_marginTop="18dp" />
 
     <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:text="Alertes"
-        android:textSize="30dp"
-
-        android:contextClickable="true"
-        android:id="@+id/liste"
-        android:layout_above="@+id/carac"
-
-        />
-
-    <TextView
-        android:id="@+id/alertes"
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:layout_alignParentBottom="true"
-        android:layout_alignParentStart="true"
-        android:contextClickable="true"
-        android:text="Code barres"
-        android:textSize="30dp" />
-    <TextView
-        android:layout_width="match_parent"
-        android:layout_height="60dp"
-        android:id="@+id/carac"
-        android:text="Retirer "
-        android:textSize="30dp"
-        android:contextClickable="true"
-        android:layout_above="@+id/alertes"
-        />
-
-    <TextView
-        android:id="@+id/textView"
+        android:id="@+id/textViewCat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Categorie:"
-        android:layout_marginBottom="12dp"
-        android:layout_above="@+id/datePremtionData"
-        android:layout_alignParentStart="true"
-        android:layout_marginStart="13dp" />
+        android:layout_centerVertical="true"
+        android:layout_toStartOf="@+id/titre" />
 
     <TextView
-        android:id="@+id/textView2"
+        android:id="@+id/textViewDatePr"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date péremption:"
-        android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/textView" />
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textViewDateAj"
+        android:layout_alignStart="@+id/textViewCat" />
 
     <TextView
-        android:id="@+id/textView5"
+        android:id="@+id/textViewDateAj"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Date ajout:"
-        android:layout_above="@+id/liste"
-        android:layout_alignStart="@+id/textView2"
-        android:layout_marginBottom="21dp" />
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/textViewCat"
+        android:layout_alignStart="@+id/textViewDatePr" />
 
     <TextView
         android:id="@+id/categorieData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="cat"
-        android:layout_alignBaseline="@+id/textView"
-        android:layout_alignBottom="@+id/textView"
-        android:layout_alignEnd="@+id/im"
-        android:layout_marginEnd="26dp" />
+        android:layout_alignBaseline="@+id/textViewCat"
+        android:layout_alignBottom="@+id/textViewCat"
+        android:layout_alignEnd="@+id/titre" />
 
     <TextView
         android:id="@+id/datePremtionData"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="datee"
-        android:layout_alignBaseline="@+id/textView2"
-        android:layout_alignBottom="@+id/textView2"
+        android:layout_alignBaseline="@+id/textViewDatePr"
+        android:layout_alignBottom="@+id/textViewDatePr"
         android:layout_alignStart="@+id/categorieData" />
 
     <TextView
@@ -109,9 +76,18 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="datee"
-        android:layout_alignBaseline="@+id/textView5"
-        android:layout_alignBottom="@+id/textView5"
+        android:layout_alignBaseline="@+id/textViewDateAj"
+        android:layout_alignBottom="@+id/textViewDateAj"
         android:layout_alignStart="@+id/datePremtionData" />
+
+    <Button
+        android:id="@+id/buttonRetirer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="42dp"
+        android:text="Retirer"
+        android:layout_alignParentBottom="true"
+        android:layout_alignEnd="@+id/im" />
 
 
 </RelativeLayout>
