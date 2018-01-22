@@ -96,13 +96,10 @@
             android:progressDrawable="@drawable/custom_progress"/>
         <SeekBar
             android:id="@+id/customSeekBar"
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
             android:max="60"
-            android:progress="10"
-
-            android:rotation="270"
+            android:progress="20"
             android:progressDrawable="@drawable/custom_progress"/>
         <TextView
             android:id="@+id/textView3"
