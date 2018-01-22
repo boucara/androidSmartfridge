@@ -38,14 +38,21 @@ public class ActivityAccueil extends AppCompatActivity {
                 startActivity(i);
             }
         });
-        /*
-        produits.setOnClickListener(new View.OnClickListener() {
+
+        aboutUs.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent i=new Intent(ActivityAccueil.this,ActivityProduits.class);
+                Intent i=new Intent(ActivityAccueil.this,AProposActivity.class);
                 startActivity(i);
             }
-        });*/
+        });
+        nousContact.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i=new Intent(ActivityAccueil.this,AProposActivity.class);
+                startActivity(i);
+            }
+        });
 
     }
 }

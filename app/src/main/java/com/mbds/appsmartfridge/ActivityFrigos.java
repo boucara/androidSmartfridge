@@ -29,14 +29,17 @@ public class ActivityFrigos extends AppCompatActivity {
         listFrigos.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-               Toast.makeText(ActivityFrigos.this,"Position "+position+", id "+id,Toast.LENGTH_LONG).show();
+                //Toast.makeText(ActivityFrigos.this,"Position "+position+", id "+id,Toast.LENGTH_LONG).show();
                 Frigo f=(Frigo)adapter.getItem(position);
-                Bundle args = new Bundle();
-                args.putSerializable("frigo",f);
-                args.putSerializable("id",id+1);
-                Intent i = new Intent(ActivityFrigos.this,ActivityFrigo.class);
-                i.putExtras(args);
-                startActivity(i);/**/
+                if(f.getFrigoStatus()=="Connecté"){
+                    Bundle args = new Bundle();
+                    args.putSerializable("frigo",f);
+                    args.putSerializable("id",id+1);
+                    Intent i = new Intent(ActivityFrigos.this,ActivityFrigo.class);
+                    i.putExtras(args);
+                    startActivity(i);/**/
+                }
+
 
             }
         });

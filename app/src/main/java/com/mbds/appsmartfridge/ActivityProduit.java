@@ -3,6 +3,7 @@ package com.mbds.appsmartfridge;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -10,14 +11,15 @@ import com.mbds.appsmartfridge.model.Produit;
 
 public class ActivityProduit extends AppCompatActivity {
 
-    TextView textView2;
-    TextView textView5;
+    TextView textViewDatePr;
+    TextView textViewDateAj;
     TextView categorieData;
     TextView datePremtionData;
     TextView dateAjoutData;
-    TextView textView;
+    TextView textViewCat;
     ImageView img;
     TextView titre;
+    Button retirer;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,12 +27,13 @@ public class ActivityProduit extends AppCompatActivity {
 
         titre=(TextView)findViewById(R.id.titre);
         img=(ImageView)findViewById(R.id.im) ;
-        textView=(TextView)findViewById(R.id.textView);
-        textView2=(TextView)findViewById(R.id.textView2);
-        textView5=(TextView)findViewById(R.id.textView5);
+        textViewCat=(TextView)findViewById(R.id.textViewCat);
+        textViewDatePr=(TextView)findViewById(R.id.textViewDatePr);
+        textViewDateAj=(TextView)findViewById(R.id.textViewDateAj);
         categorieData=(TextView)findViewById(R.id.categorieData);
         dateAjoutData=(TextView)findViewById(R.id.dateAjoutData);
         datePremtionData=(TextView)findViewById(R.id.datePremtionData);
+        retirer = (Button)findViewById(R.id.buttonRetirer);
         Intent i = getIntent();
         Produit prod = (Produit) i.getSerializableExtra("produit");
         titre.setText(prod.getNom());
