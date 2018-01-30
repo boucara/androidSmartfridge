@@ -21,6 +21,25 @@
         android:textAlignment="center"
         android:textAppearance="@style/TextAppearance.AppCompat"
         android:textColor="@color/colorPrimary" />
+    <Button
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/Scan"
+        android:text="Scanner"
+        android:layout_below="@+id/produits"
+        android:clickable="true"
+        android:layout_marginLeft="10dp"/>
+
+    <Button
+        android:id="@+id/AjoutProd"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/produits"
+        android:layout_marginEnd="12dp"
+        android:clickable="true"
+        android:text="Ajouter" />
     <ListView
         android:id="@+id/produits"
         android:layout_width="match_parent"
