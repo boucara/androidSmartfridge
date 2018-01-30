@@ -4,70 +4,83 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_marginLeft="40dp"
+    android:layout_marginRight="40dp"
 
-    tools:context="com.mbds.appsmartfridge.Main2Activity">
+    tools:context="com.mbds.appsmartfridge.ActivityAddAlerte">
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="0dp">
+        android:layout_height="match_parent"
+        android:gravity="center">
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:id="@+id/titre"
+            android:textColor="@color/colorPrimary"
+            android:textSize="18dp"
+            android:textStyle="bold"
+            android:textAlignment="center"
 
-        <ImageButton
+            android:layout_alignParentTop="true"
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="12dp"/>
+
+     <!--<ImageButton
             android:id="@+id/fab"
             android:layout_width="40dp"
             android:layout_height="30dp"
-            android:layout_gravity="bottom|end"
-            android:layout_margin="@dimen/fab_margin"
             app:srcCompat="@android:drawable/ic_dialog_alert"
-            android:layout_marginRight="10dp"/>
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="30dp"
-        android:id="@+id/titre"
-        android:text="Alerte: la date de péremption"
-        android:textColor="#DAA520"
-        android:textSize="18dp"
-        android:textStyle="bold"/>
+            android:layout_centerHorizontal="true"
+            android:layout_marginTop="18dp"/>-->
+
     </LinearLayout>
 
 
     <LinearLayout
         android:orientation="vertical"
-        android:layout_width="0dp"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:gravity="center"
-        tools:layout_editor_absoluteY="0dp"
-        tools:layout_editor_absoluteX="8dp">
+        android:gravity="center">
 
         <!-- Spinner Element -->
         <Spinner
             android:id="@+id/spinner"
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="80dp"/>
+            android:layout_marginTop="80dp"
+            style="@style/spinner_style"
+            android:spinnerMode="dropdown"
+            />
 
         <Button
             android:id="@+id/buttondate"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_alignParentTop="true"
             android:layout_centerHorizontal="true"
-            android:layout_marginTop="70dp"
+            android:layout_marginTop="20dp"
             android:onClick="setDate"
             android:text="choisissez la date de péremption"
             android:textColorHint="#000"
             />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Saisissez le nom de l'alerte"
+            android:layout_marginTop="20dp"
+            android:textSize="18dp"
+            android:layout_centerHorizontal="true"
+            android:textColor="#000"/>
         <EditText android:id="@+id/nom"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
-            android:textColorHint="#000"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textColorHint="#E1E6FA"
             android:textSize="22dp"
             android:background="@drawable/border"
             android:hint="Nom Alerte Produit"
-            android:layout_marginTop="30dp"
             android:textAlignment="center"
+
             />
         <com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar
             android:id="@+id/rangeSeekbar"
@@ -79,11 +92,19 @@
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
             android:progress="20"
-            android:secondaryProgress="20" />
+            android:secondaryProgress="20"
+            android:progressDrawable="@drawable/custom_progress"/>
+        <SeekBar
+            android:id="@+id/customSeekBar"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:max="60"
+            android:progress="20"
+            android:progressDrawable="@drawable/custom_progress"/>
         <TextView
             android:id="@+id/textView3"
-            android:layout_width="250dp"
-            android:layout_height="40dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_alignRight="@+id/button1"
             android:layout_below="@+id/textView2"
             android:text="@string/date_selected"

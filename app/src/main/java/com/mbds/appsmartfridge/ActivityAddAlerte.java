@@ -2,9 +2,15 @@ package com.mbds.appsmartfridge;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
-import android.icu.util.Calendar;
+//import android.icu.util.Calendar;
+import java.util.Calendar;
+
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Build;
 import android.support.annotation.RequiresApi;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -21,27 +27,97 @@ import android.widget.Toast;
 
 import com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar;
 
-public class Main2Activity extends AppCompatActivity {
+public class ActivityAddAlerte extends AppCompatActivity {
     TextView titre  ;
-    Button buttonDate;
+    Button buttonDate , ajout;
     EditText nomAlerte;
     com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar seekBar;
     SeekBar mySeekbar;
+    SeekBar customSeekBar;
     private DatePicker datePicker;
     private Calendar calendar;
     private TextView dateView;
     private int year, month, day;
+    final Context context = this;
+
+    static final int LONG_DELAY = 3500;
     @RequiresApi(api = Build.VERSION_CODES.N)
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main2);
+        setContentView(R.layout.activity_main_add_alerte);
 
         titre=(TextView)findViewById(R.id.titre);
+        nomAlerte=(EditText)findViewById(R.id.nom);
+
         //titre.setVisibility(View.INVISIBLE);
+        ajout=(Button) findViewById(R.id.ajout) ;
+        ajout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(nomAlerte.getText().toString().matches(" ") || nomAlerte.getText().toString().isEmpty() || nomAlerte.getText().toString().equals("\t")){
+                    Toast.makeText(context, "vous devez renseigner le nom de l'alerte!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else if(!nomAlerte.getText().toString().contains("_")){
+                    Toast.makeText(context, "Saisie incorrecte , respectez les consignes de nommages!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+            else{
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                    //System.out.print("text alerte"+nomAlerte.getText());
+
+                    // set title
+
+                    alertDialogBuilder.setTitle("Ajout alerte");
+
+                    // set dialog message
+                    alertDialogBuilder
+                            .setMessage("voulez vous confirmer?")
+                            .setCancelable(false)
+                            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, close
+                                    // current activity
+                                    Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
+
+
+                                    intent.putExtra("name",nomAlerte.getText().toString());
+                                    setResult(1, intent);
+                                    finish();
+                                    //ActivityAddAlerte.this.finish();
+                                }
+                            })
+                            .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    // if this button is clicked, just close
+                                    // the dialog box and do nothing
+                                    dialog.cancel();
+                                }
+                            });
+
+                    // create alert dialog
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+
+                    // show it
+                    alertDialog.show();
+                    //  Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
+                    // startActivityForResult(intent,1 );
+
+
+
+                }
+
+
+
+
+            }
+        });
 
         buttonDate=(Button)findViewById(R.id.buttondate);
-        nomAlerte=(EditText)findViewById(R.id.nom);
 
 
         dateView = (TextView) findViewById(R.id.textView3);
@@ -53,11 +129,51 @@ public class Main2Activity extends AppCompatActivity {
         showDate(year, month+1, day);
 
         seekBar=( com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar)findViewById(R.id.rangeSeekbar);
+
         mySeekbar =(SeekBar)findViewById(R.id.seek1);
+        mySeekbar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(ActivityAddAlerte.this, "temps de décomposition :" + progressChangedValue+"s",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
+
+
+
+        customSeekBar =(SeekBar)findViewById(R.id.customSeekBar);
+        customSeekBar.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener() {
+            int progressChangedValue = 0;
+
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
+                progressChangedValue = progress;
+            }
+
+            public void onStartTrackingTouch(SeekBar seekBar) {
+                // TODO Auto-generated method stub
+            }
+
+            public void onStopTrackingTouch(SeekBar seekBar) {
+                Toast.makeText(ActivityAddAlerte.this, "temps d'ouverture de la porte est :" + progressChangedValue+"s",
+                        Toast.LENGTH_SHORT).show();
+            }
+        });
+
 
         Spinner spinner_Alerte = (Spinner) findViewById(R.id.spinner);
-        String[] items = new String[] { "temperature", "decomposition", "porte" , "hygrometrie","péremption" };
+        String[] items = new String[] { "Temperature", "Decomposition", "Porte" , "Hygrometrie","Péremption" };
         ArrayAdapter<String> adapter_Alerte = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, items);
+        adapter_Alerte.setDropDownViewResource(R.layout.spinner_dropdown_item);
         spinner_Alerte.setAdapter(adapter_Alerte);
         spinner_Alerte.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
@@ -67,28 +183,39 @@ public class Main2Activity extends AppCompatActivity {
 
                 if(alerte.equalsIgnoreCase("temperature")){
                     nomAlerte.setVisibility(View.VISIBLE);
+                    nomAlerte.setHint("Example: Temp_myalerte");
                     seekBar.setVisibility(View.VISIBLE);
                     buttonDate.setVisibility(View.INVISIBLE);
                     dateView.setVisibility(View.INVISIBLE);
                     mySeekbar.setVisibility(View.INVISIBLE);
+                    titre.setText(" Alerte Temperature");
+                    customSeekBar.setVisibility(View.INVISIBLE);
 
                 }
 
                 else if(alerte.equalsIgnoreCase("decomposition")){
                     nomAlerte.setVisibility(View.VISIBLE);
+                    nomAlerte.setHint("Example: Decomp_myalerte");
                     seekBar.setVisibility(View.INVISIBLE);
                     buttonDate.setVisibility(View.INVISIBLE);
                     dateView.setVisibility(View.INVISIBLE);
                     mySeekbar.setVisibility(View.VISIBLE);
+                    titre.setText(" Alerte Decomposition");
+                    customSeekBar.setVisibility(View.INVISIBLE);
+
 
 
                 }
                 else if(alerte.equalsIgnoreCase("porte")){
                     nomAlerte.setVisibility(View.VISIBLE);
+                    nomAlerte.setHint("Example: Porte_myalerte");
                     seekBar.setVisibility(View.INVISIBLE);
                     buttonDate.setVisibility(View.INVISIBLE);
                     dateView.setVisibility(View.INVISIBLE);
                     mySeekbar.setVisibility(View.INVISIBLE);
+                    titre.setText(" Alerte Porte");
+                    customSeekBar.setVisibility(View.VISIBLE);
+
 
 
                 }
@@ -97,7 +224,13 @@ public class Main2Activity extends AppCompatActivity {
                     buttonDate.setVisibility(View.INVISIBLE);
                     dateView.setVisibility(View.INVISIBLE);
                     nomAlerte.setVisibility(View.VISIBLE);
+                    nomAlerte.setHint("Example: Hygro_myalerte");
                     mySeekbar.setVisibility(View.INVISIBLE);
+                   // titre.setText(" Alerte Hygrometrie");
+                    titre.setText(" Alerte Hygrométrie");
+                    customSeekBar.setVisibility(View.INVISIBLE);
+
+
 
                 }
                 else if(alerte.equalsIgnoreCase("péremption")) {
@@ -105,8 +238,12 @@ public class Main2Activity extends AppCompatActivity {
                     buttonDate.setVisibility(View.VISIBLE);
                     dateView.setVisibility(View.VISIBLE);
                     nomAlerte.setVisibility(View.VISIBLE);
+                    nomAlerte.setHint("Example: Péremp_myalerte");
                     seekBar.setVisibility(View.INVISIBLE);
                     mySeekbar.setVisibility(View.INVISIBLE);
+                    titre.setText(" Alerte Péremption");
+                    customSeekBar.setVisibility(View.INVISIBLE);
+
                 }
             }
 
