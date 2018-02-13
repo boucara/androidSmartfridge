@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp">
+
+    <TextView
+        android:id="@+id/titre"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+
+        android:text="My Produit 1"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="12dp" />
+
+    <ImageView
+        android:id="@+id/im"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentStart="true"
+        android:layout_centerVertical="true"
+        android:layout_marginStart="34dp"
+        android:src="@drawable/ic_imagecadre_black_24dp" />
+
+    <TextView
+        android:id="@+id/textViewCat"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/titre"
+        android:layout_below="@+id/titre"
+        android:layout_marginTop="60dp"
+        android:text="Categorie:" />
+
+    <TextView
+        android:id="@+id/textViewDatePr"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date péremption:"
+        android:layout_marginTop="17dp"
+        android:layout_below="@+id/textViewDateAj"
+        android:layout_alignStart="@+id/textViewCat" />
+
+    <TextView
+        android:id="@+id/textViewDateAj"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date ajout:"
+        android:layout_marginTop="23dp"
+        android:layout_below="@+id/textViewCat"
+        android:layout_alignStart="@+id/textViewDatePr" />
+
+    <TextView
+        android:id="@+id/categorieData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="cat"
+        android:layout_alignBaseline="@+id/textViewCat"
+        android:layout_alignBottom="@+id/textViewCat"
+        android:layout_alignEnd="@+id/titre" />
+
+    <TextView
+        android:id="@+id/datePremtionData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="datee"
+        android:layout_alignBaseline="@+id/textViewDatePr"
+        android:layout_alignBottom="@+id/textViewDatePr"
+        android:layout_alignStart="@+id/categorieData" />
+
+    <TextView
+        android:id="@+id/dateAjoutData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="datee"
+        android:layout_alignBaseline="@+id/textViewDateAj"
+        android:layout_alignBottom="@+id/textViewDateAj"
+        android:layout_alignStart="@+id/datePremtionData" />
+
+    <Button
+        android:id="@+id/buttonRetirer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_below="@+id/datePremtionData"
+        android:layout_marginEnd="21dp"
+        android:text="Retirer" />
+
+
+</RelativeLayout>
+
