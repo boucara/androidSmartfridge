@@ -1,0 +1,198 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp"
+    tools:context="com.mbds.appsmartfridge.ActivityFrigo">
+
+    <ImageView
+        android:id="@+id/imageFrigo"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:src="@drawable/ic_imagecadre_black_24dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/imageTemp"
+        app:layout_constraintHorizontal_bias="0.349"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2"
+        app:layout_constraintVertical_bias="0.55" />
+
+    <ImageView
+        android:id="@+id/imageTemp"
+        android:layout_width="53dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageFrigo"
+        android:layout_marginStart="88dp"
+        android:layout_marginTop="64dp"
+        android:layout_toStartOf="@+id/imageFrigo"
+        android:src="@drawable/ic_temperature"
+        app:layout_constraintStart_toEndOf="@+id/imageFrigo"
+        app:layout_constraintTop_toBottomOf="@+id/guideline2" />
+
+    <ImageView
+        android:id="@+id/imageHumidite"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_below="@+id/imageTemp"
+        android:layout_marginStart="88dp"
+        android:layout_toStartOf="@+id/humiditeData"
+        android:src="@drawable/ic_humidite"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imageFrigo"
+        app:layout_constraintTop_toBottomOf="@+id/imageTemp"
+        app:layout_constraintVertical_bias="0.299" />
+
+    <ImageView
+        android:id="@+id/imageDecomposition"
+        android:layout_width="60dp"
+        android:layout_height="40dp"
+        android:layout_alignTop="@+id/imageTemp"
+        android:layout_marginTop="64dp"
+        android:layout_toEndOf="@+id/tempData"
+        android:src="@drawable/ic_gradient_black"
+        app:layout_constraintEnd_toStartOf="@+id/decompositionData"
+        app:layout_constraintHorizontal_bias="0.988"
+        app:layout_constraintStart_toEndOf="@+id/tempData"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <ImageView
+        android:id="@+id/imageStatus"
+        android:layout_width="50dp"
+        android:layout_height="40dp"
+        android:layout_alignStart="@+id/imageDecomposition"
+        android:layout_alignTop="@+id/imageHumidite"
+        android:layout_marginStart="92dp"
+        android:src="@drawable/ic_status"
+        app:layout_constraintBottom_toTopOf="@+id/butCaract"
+        app:layout_constraintStart_toEndOf="@+id/humiditeData"
+        app:layout_constraintTop_toBottomOf="@+id/imageDecomposition"
+        app:layout_constraintVertical_bias="0.508" />
+
+    <TextView
+        android:id="@+id/tempData"
+        android:layout_width="wrap_content"
+        android:layout_height="15dp"
+        android:layout_alignTop="@+id/imageTemp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="28dp"
+        android:layout_toEndOf="@+id/imageTemp"
+        android:text="temp"
+        app:layout_constraintStart_toEndOf="@+id/imageTemp"
+        app:layout_constraintTop_toBottomOf="@+id/titre" />
+
+    <TextView
+        android:id="@+id/humiditeData"
+        android:layout_width="wrap_content"
+        android:layout_height="18dp"
+        android:layout_alignTop="@+id/imageHumidite"
+        android:layout_marginStart="24dp"
+        android:layout_toEndOf="@+id/imageTemp"
+        android:text="humid"
+        app:layout_constraintBottom_toTopOf="@+id/butCaract"
+        app:layout_constraintStart_toEndOf="@+id/imageHumidite"
+        app:layout_constraintTop_toBottomOf="@+id/tempData" />
+
+    <TextView
+        android:id="@+id/decompositionData"
+        android:layout_width="wrap_content"
+        android:layout_height="22dp"
+        android:layout_alignTop="@+id/imageDecomposition"
+        android:layout_marginEnd="68dp"
+        android:layout_marginTop="80dp"
+        android:layout_toEndOf="@+id/imageDecomposition"
+        android:text="decomp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <TextView
+        android:id="@+id/statusData"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/decompositionData"
+        android:layout_alignTop="@+id/imageStatus"
+        android:text="satus"
+        app:layout_constraintBottom_toTopOf="@+id/buttAlertes"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.198"
+        app:layout_constraintStart_toEndOf="@+id/imageStatus"
+        app:layout_constraintTop_toBottomOf="@+id/decompositionData"
+        app:layout_constraintVertical_bias="0.425" />
+
+    <Button
+        android:id="@+id/buttAlertes"
+        android:layout_width="wrap_content"
+        android:layout_height="37dp"
+        android:layout_alignEnd="@+id/decompositionData"
+        android:layout_alignStart="@+id/butCaract"
+        android:layout_below="@+id/imageHumidite"
+        android:layout_marginBottom="16dp"
+        android:text="Alertes"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/butCaract" />
+
+    <Button
+        android:id="@+id/butCaract"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignEnd="@+id/decompositionData"
+        android:layout_alignStart="@+id/imageTemp"
+        android:layout_below="@+id/butProd"
+        android:layout_marginBottom="16dp"
+        android:text="Caractéristiques"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/buttAlertes"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/butProd" />
+
+    <Button
+        android:id="@+id/butProd"
+        android:layout_width="wrap_content"
+        android:layout_height="36dp"
+        android:layout_alignEnd="@+id/buttAlertes"
+        android:layout_alignStart="@+id/buttAlertes"
+        android:layout_below="@+id/buttAlertes"
+        android:layout_marginBottom="16dp"
+        android:text="Produits"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/butCaract"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/guideline" />
+
+    <TextView
+        android:id="@+id/titre"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignStart="@+id/imageHumidite"
+        android:layout_marginTop="16dp"
+        android:layout_toStartOf="@+id/statusData"
+        android:text="Refrig 1"
+        android:textAlignment="center"
+        android:textSize="30sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="20dp" />
+
+    <android.support.constraint.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="20dp" />
+
+
+</android.support.constraint.ConstraintLayout>
+

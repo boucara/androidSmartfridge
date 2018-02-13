@@ -38,6 +38,8 @@ public class ActivityProduits extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_produits);
         listProds=(ListView)findViewById(R.id.produits);
+        Intent i = getIntent();
+        final long id = (long)i.getSerializableExtra("id");
         initList();
         adapter=new ProduitAdapterHelper(this,LP);
         listProds.setAdapter(adapter);
@@ -91,6 +93,7 @@ public class ActivityProduits extends AppCompatActivity {
 
                 try {
                     JSONObject obj = new JSONObject(result.getContents());
+
                 } catch (JSONException e) {
                     e.printStackTrace();
                     Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();

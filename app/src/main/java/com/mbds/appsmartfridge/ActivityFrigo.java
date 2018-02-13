@@ -45,7 +45,7 @@ public class ActivityFrigo extends AppCompatActivity {
 
         Intent i = getIntent();
         Frigo frigo = (Frigo)i.getSerializableExtra("frigo");
-        long id = (long)i.getSerializableExtra("id");
+        final long id = (long)i.getSerializableExtra("id");
         //Toast.makeText(getApplicationContext(),Integer.toString(frigo.getTemperature()),Toast.LENGTH_LONG).show();
         titre.setText(frigo.getFrigoName());
         temp_t.setText(Integer.toString(frigo.getTemperature())+" °");
@@ -55,9 +55,10 @@ public class ActivityFrigo extends AppCompatActivity {
         liste_prod.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                //Bundle args = new Bundle();
-                //args.putSerializable("frigo",f);
+                Bundle args = new Bundle();
+                args.putSerializable("id",id);
                 Intent i=new Intent(ActivityFrigo.this,ActivityProduits.class);
+                i.putExtras(args);
                 startActivity(i);
             }
         });

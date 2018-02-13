@@ -20,7 +20,7 @@
         android:id="@+id/imageTemp"
         android:layout_width="100dp"
         android:layout_height="40dp"
-        app:srcCompat="@drawable/ic_temperature"
+        android:src="@drawable/ic_temperature"
         android:layout_below="@+id/imageFrigo"
         android:layout_toStartOf="@+id/imageFrigo"
         android:layout_marginTop="14dp" />
@@ -29,7 +29,7 @@
         android:id="@+id/imageHumidite"
         android:layout_width="50dp"
         android:layout_height="40dp"
-        app:srcCompat="@drawable/ic_humidite"
+        android:src="@drawable/ic_humidite"
         android:layout_marginEnd="11dp"
         android:layout_marginTop="35dp"
         android:layout_below="@+id/imageTemp"
@@ -39,7 +39,7 @@
         android:id="@+id/imageDecomposition"
         android:layout_width="60dp"
         android:layout_height="40dp"
-        app:srcCompat="@drawable/ic_gradient_black"
+        android:src="@drawable/ic_gradient_black"
         android:layout_alignTop="@+id/imageTemp"
         android:layout_toEndOf="@+id/tempData"
         android:layout_marginStart="39dp" />
@@ -50,7 +50,7 @@
         android:layout_height="40dp"
         android:layout_alignStart="@+id/imageDecomposition"
         android:layout_alignTop="@+id/imageHumidite"
-        app:srcCompat="@drawable/ic_status" />
+        android:src="@drawable/ic_status" />
 
     <TextView
         android:id="@+id/tempData"
