@@ -85,20 +85,35 @@
         <com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar
             android:id="@+id/rangeSeekbar"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content" />
-        <SeekBar
+            android:layout_height="wrap_content"
+            />
+      <LinearLayout
+          android:layout_width="match_parent"
+          android:layout_height="wrap_content"
+          android:orientation="horizontal">
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/min"/>
+          <SeekBar
             android:id="@+id/seek1"
-            android:layout_width="fill_parent"
+            android:layout_width="200dp"
             android:layout_height="wrap_content"
             android:layout_margin="10dp"
-            android:progress="20"
-            android:secondaryProgress="20"
-            android:progressDrawable="@drawable/custom_progress"/>
+              android:max="100"
+              android:progressDrawable="@drawable/custom_progress"
+
+            />
+          <TextView
+              android:layout_width="wrap_content"
+              android:layout_height="wrap_content"
+              android:id="@+id/max"/>
+      </LinearLayout>
         <SeekBar
             android:id="@+id/customSeekBar"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:max="60"
+            android:max="180"
             android:progress="20"
             android:progressDrawable="@drawable/custom_progress"/>
         <TextView
@@ -111,14 +126,23 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:background="@drawable/border"
             android:textAlignment="center"/>
-
-
-
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seektext"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seektextD"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/seektextP"/>
         <Button android:id="@+id/ajout"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="ajouter"
-            android:layout_marginTop="50dp"
+            android:layout_marginTop="2dp"
             />
     </LinearLayout>
 

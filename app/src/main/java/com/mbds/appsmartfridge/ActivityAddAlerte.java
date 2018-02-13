@@ -31,14 +31,15 @@ public class ActivityAddAlerte extends AppCompatActivity {
     TextView titre  ;
     Button buttonDate , ajout;
     EditText nomAlerte;
-    com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar seekBar;
+    com.yahoo.mobile.client.android.util.rangeseekbar.RangeSeekBar seekBar ,rangeSeekBarH;
     SeekBar mySeekbar;
     SeekBar customSeekBar;
     private DatePicker datePicker;
     private Calendar calendar;
-    private TextView dateView;
+    private TextView dateView , seektext , seektextD ,min ,max ,seektextP,seektextH;
     private int year, month, day;
     final Context context = this;
+
 
     static final int LONG_DELAY = 3500;
     @RequiresApi(api = Build.VERSION_CODES.N)
@@ -49,8 +50,15 @@ public class ActivityAddAlerte extends AppCompatActivity {
 
         titre=(TextView)findViewById(R.id.titre);
         nomAlerte=(EditText)findViewById(R.id.nom);
+        seektext=(TextView)findViewById(R.id.seektext) ;
+        seektextD=(TextView)findViewById(R.id.seektextD) ;
+        seektextP=(TextView)findViewById(R.id.seektextP) ;
 
-        //titre.setVisibility(View.INVISIBLE);
+        min=(TextView)findViewById(R.id.min) ;
+        max=(TextView)findViewById(R.id.max) ;
+
+
+
         ajout=(Button) findViewById(R.id.ajout) ;
         ajout.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,48 +76,26 @@ public class ActivityAddAlerte extends AppCompatActivity {
             else{
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
-                    //System.out.print("text alerte"+nomAlerte.getText());
-
-                    // set title
-
                     alertDialogBuilder.setTitle("Ajout alerte");
-
-                    // set dialog message
                     alertDialogBuilder
                             .setMessage("voulez vous confirmer?")
                             .setCancelable(false)
                             .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    // if this button is clicked, close
-                                    // current activity
                                     Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
-
-
                                     intent.putExtra("name",nomAlerte.getText().toString());
                                     setResult(1, intent);
                                     finish();
-                                    //ActivityAddAlerte.this.finish();
                                 }
                             })
                             .setNegativeButton("Non", new DialogInterface.OnClickListener() {
                                 public void onClick(DialogInterface dialog, int id) {
-                                    // if this button is clicked, just close
-                                    // the dialog box and do nothing
                                     dialog.cancel();
                                 }
                             });
-
-                    // create alert dialog
                     AlertDialog alertDialog = alertDialogBuilder.create();
-
-                    // show it
                     alertDialog.show();
-                    //  Intent intent = new Intent(ActivityAddAlerte.this,ActivityListeAlerte.class);
-                    // startActivityForResult(intent,1 );
-
-
-
-                }
+            }
 
 
 
@@ -143,8 +129,9 @@ public class ActivityAddAlerte extends AppCompatActivity {
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(ActivityAddAlerte.this, "temps de décomposition :" + progressChangedValue+"s",
-                        Toast.LENGTH_SHORT).show();
+
+                seektextD.setText("temps de décomposition :" + progressChangedValue+"%");
+
             }
         });
 
@@ -164,8 +151,8 @@ public class ActivityAddAlerte extends AppCompatActivity {
             }
 
             public void onStopTrackingTouch(SeekBar seekBar) {
-                Toast.makeText(ActivityAddAlerte.this, "temps d'ouverture de la porte est :" + progressChangedValue+"s",
-                        Toast.LENGTH_SHORT).show();
+                seektextP.setText("temps d'ouverture de la porte  :" + progressChangedValue+"s");
+
             }
         });
 
@@ -190,6 +177,20 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     mySeekbar.setVisibility(View.INVISIBLE);
                     titre.setText(" Alerte Temperature");
                     customSeekBar.setVisibility(View.INVISIBLE);
+                    seektext.setVisibility(View.VISIBLE);
+                    seektextD.setVisibility(View.INVISIBLE);
+                    seektextP.setVisibility(View.INVISIBLE);
+                    min.setVisibility(View.VISIBLE);
+                    min.setText("0°");
+                    max.setVisibility(View.VISIBLE);
+                    max.setText("15°");
+                    seekBar.setRangeValues(0,15) ;
+                    seekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
+                        @Override
+                        public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+                            seektext.setText(minValue+"°" + "-" + maxValue+"°");
+                        }
+                    });
 
                 }
 
@@ -202,9 +203,14 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     mySeekbar.setVisibility(View.VISIBLE);
                     titre.setText(" Alerte Decomposition");
                     customSeekBar.setVisibility(View.INVISIBLE);
+                    seektext.setVisibility(View.INVISIBLE);
+                    seektextD.setVisibility(View.VISIBLE);
+                    seektextP.setVisibility(View.INVISIBLE);
 
-
-
+                    min.setVisibility(View.VISIBLE);
+                    min.setText("0%");
+                    max.setVisibility(View.VISIBLE);
+                    max.setText("100%");
                 }
                 else if(alerte.equalsIgnoreCase("porte")){
                     nomAlerte.setVisibility(View.VISIBLE);
@@ -215,9 +221,13 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     mySeekbar.setVisibility(View.INVISIBLE);
                     titre.setText(" Alerte Porte");
                     customSeekBar.setVisibility(View.VISIBLE);
-
-
-
+                    seektext.setVisibility(View.INVISIBLE);
+                    seektextD.setVisibility(View.INVISIBLE);
+                    seektextP.setVisibility(View.VISIBLE);
+                    min.setVisibility(View.VISIBLE);
+                    min.setText("0S");
+                    max.setVisibility(View.VISIBLE);
+                    max.setText("180S");
                 }
                else if(alerte.equalsIgnoreCase("hygrometrie")){
                     seekBar.setVisibility(View.VISIBLE);
@@ -226,10 +236,26 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     nomAlerte.setVisibility(View.VISIBLE);
                     nomAlerte.setHint("Example: Hygro_myalerte");
                     mySeekbar.setVisibility(View.INVISIBLE);
-                   // titre.setText(" Alerte Hygrometrie");
+
                     titre.setText(" Alerte Hygrométrie");
                     customSeekBar.setVisibility(View.INVISIBLE);
+                    seektext.setVisibility(View.VISIBLE);
+                    seektextD.setVisibility(View.INVISIBLE);
+                    seektextP.setVisibility(View.INVISIBLE);
+                    min.setVisibility(View.VISIBLE);
+                    min.setText("0%");
+                    max.setVisibility(View.VISIBLE);
+                    max.setText("100%");
+                    seektext.setText("");
+                    seekBar.setRangeValues(0,100) ;
 
+
+                    seekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
+                        @Override
+                        public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
+                            seektext.setText(minValue+"%" + "-" + maxValue+"%");
+                        }
+                    });
 
 
                 }
@@ -243,6 +269,12 @@ public class ActivityAddAlerte extends AppCompatActivity {
                     mySeekbar.setVisibility(View.INVISIBLE);
                     titre.setText(" Alerte Péremption");
                     customSeekBar.setVisibility(View.INVISIBLE);
+                    seektextD.setVisibility(View.INVISIBLE);
+                    min.setVisibility(View.INVISIBLE);
+                    max.setVisibility(View.INVISIBLE);
+                    seektextP.setVisibility(View.INVISIBLE);
+                    seektext.setVisibility(View.INVISIBLE);
+
 
                 }
             }
@@ -253,15 +285,8 @@ public class ActivityAddAlerte extends AppCompatActivity {
             }
         });
 
-        seekBar.setOnRangeSeekBarChangeListener(new RangeSeekBar.OnRangeSeekBarChangeListener<Integer>() {
-            @Override
-            public void onRangeSeekBarValuesChanged(RangeSeekBar<?> bar, Integer minValue, Integer maxValue) {
-                //Now you have the minValue and maxValue of your RangeSeekbar
-                Toast.makeText(getApplicationContext(), minValue + "-" + maxValue, Toast.LENGTH_LONG).show();
-            }
-        });
 
-// Get noticed while dragging
+
         seekBar.setNotifyWhileDragging(true);
     }
     @SuppressWarnings("deprecation")

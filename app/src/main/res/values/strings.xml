@@ -9,5 +9,8 @@
     <string name="C">C</string>
     <string name="produitPhoto">produitPhoto</string>
     <string name="title_activity_prods">ActivityProds</string>
+    <string name="demo_min_label">Min</string>
+    <string name="demo_max_label">Max</string>
+
 
 </resources>
