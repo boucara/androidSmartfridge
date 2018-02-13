@@ -102,6 +102,7 @@
             android:layout_margin="10dp"
               android:max="100"
               android:progressDrawable="@drawable/custom_progress"
+              android:thumb="@drawable/seek_thumb_pressed"
 
             />
           <TextView
@@ -115,7 +116,8 @@
             android:layout_height="wrap_content"
             android:max="180"
             android:progress="20"
-            android:progressDrawable="@drawable/custom_progress"/>
+            android:progressDrawable="@drawable/custom_progress"
+            android:thumb="@drawable/seek_thumb_pressed"/>
         <TextView
             android:id="@+id/textView3"
             android:layout_width="match_parent"
