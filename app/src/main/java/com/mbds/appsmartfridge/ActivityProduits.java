@@ -92,11 +92,11 @@ public class ActivityProduits extends AppCompatActivity {
             } else {
 
                 try {
-                    JSONObject obj = new JSONObject(result.getContents());
-
-                } catch (JSONException e) {
-                    e.printStackTrace();
+                    //JSONObject obj = new JSONObject(result.getContents());
                     Toast.makeText(this, result.getContents(), Toast.LENGTH_LONG).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                    Toast.makeText(this, "error", Toast.LENGTH_LONG).show();
                 }
             }
         } else {

@@ -6,124 +6,170 @@
     android:layout_height="match_parent"
     android:layout_margin="15dp"
     tools:context="com.mbds.appsmartfridge.ActivityFrigo">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:weightSum="6">
+    <LinearLayout
 
-    <ImageView
-        android:id="@+id/imageFrigo"
-        android:layout_width="100dp"
-        android:layout_height="100dp"
-        android:src="@drawable/ic_imagecadre_black_24dp"
-        android:layout_marginTop="66dp"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true" />
-
-    <ImageView
-        android:id="@+id/imageTemp"
-        android:layout_width="100dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_temperature"
-        android:layout_below="@+id/imageFrigo"
-        android:layout_toStartOf="@+id/imageFrigo"
-        android:layout_marginTop="14dp" />
-
-    <ImageView
-        android:id="@+id/imageHumidite"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_humidite"
-        android:layout_marginEnd="11dp"
-        android:layout_marginTop="35dp"
-        android:layout_below="@+id/imageTemp"
-        android:layout_toStartOf="@+id/humiditeData" />
-
-    <ImageView
-        android:id="@+id/imageDecomposition"
-        android:layout_width="60dp"
-        android:layout_height="40dp"
-        android:src="@drawable/ic_gradient_black"
-        android:layout_alignTop="@+id/imageTemp"
-        android:layout_toEndOf="@+id/tempData"
-        android:layout_marginStart="39dp" />
-
-    <ImageView
-        android:id="@+id/imageStatus"
-        android:layout_width="50dp"
-        android:layout_height="40dp"
-        android:layout_alignStart="@+id/imageDecomposition"
-        android:layout_alignTop="@+id/imageHumidite"
-        android:src="@drawable/ic_status" />
-
-    <TextView
-        android:id="@+id/tempData"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="temp"
-        android:layout_alignTop="@+id/imageTemp"
-        android:layout_toEndOf="@+id/imageTemp" />
-
-    <TextView
-        android:id="@+id/humiditeData"
-        android:layout_width="wrap_content"
+        android:weightSum="2"
+        android:orientation="vertical">
+        <TextView
+            android:id="@+id/titre"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:textAlignment="center"
+            android:text="Refrig 1"
+            android:textSize="28sp" />
+        <ImageView
+            android:id="@+id/imageFrigo"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_imagecadre_black_24dp"
+            />
+    </LinearLayout>
+<LinearLayout
+    android:gravity="center"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:weightSum="2"
+    >
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="humid"
-        android:layout_alignTop="@+id/imageHumidite"
-        android:layout_toEndOf="@+id/imageTemp" />
+        android:weightSum="2"
+        android:orientation="horizontal">
+        <LinearLayout
+            android:layout_marginRight="20dp"
+            android:padding="@dimen/fab_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
 
-    <TextView
-        android:id="@+id/decompositionData"
-        android:layout_width="wrap_content"
+            <ImageView
+                android:id="@+id/imageTemp"
+                android:layout_width="70dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_temperature"
+
+                />
+            <TextView
+                android:id="@+id/tempData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="temp"
+                />
+        </LinearLayout>
+
+        <LinearLayout
+            android:padding="@dimen/fab_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+
+            <ImageView
+                android:id="@+id/imageHumidite"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_humidite"/>
+            <TextView
+                android:id="@+id/humiditeData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="humid"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="decomp"
-        android:layout_marginStart="15dp"
-        android:layout_alignTop="@+id/imageDecomposition"
-        android:layout_toEndOf="@+id/imageDecomposition" />
+        android:orientation="horizontal"
+        android:weightSum="2">
+        <LinearLayout
+            android:padding="@dimen/fab_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:weightSum="2"
+            android:orientation="horizontal">
+            <ImageView
+                android:id="@+id/imageDecomposition"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
+                android:src="@drawable/ic_gradient_black"
 
-    <TextView
-        android:id="@+id/statusData"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="satus"
-        android:layout_alignTop="@+id/imageStatus"
-        android:layout_alignStart="@+id/decompositionData" />
+                />
+            <TextView
+                android:id="@+id/decompositionData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="decomp"
+                />
 
-    <Button
-        android:id="@+id/buttAlertes"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Alertes"
-        android:layout_marginTop="25dp"
-        android:layout_below="@+id/imageHumidite"
-        android:layout_alignEnd="@+id/decompositionData"
-        android:layout_alignStart="@+id/butCaract" />
+        </LinearLayout>
 
-    <Button
-        android:id="@+id/butCaract"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/decompositionData"
-        android:layout_alignStart="@+id/imageTemp"
-        android:layout_below="@+id/butProd"
-        android:text="Caractéristiques" />
+        <LinearLayout
+            android:padding="@dimen/fab_margin"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:weightSum="2">
+            <ImageView
+                android:id="@+id/imageStatus"
+                android:layout_width="50dp"
+                android:layout_height="40dp"
 
-    <Button
-        android:id="@+id/butProd"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignEnd="@+id/buttAlertes"
-        android:layout_alignStart="@+id/buttAlertes"
-        android:layout_below="@+id/buttAlertes"
-        android:text="Produits" />
+                android:src="@drawable/ic_status" />
+            <TextView
+                android:id="@+id/statusData"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
 
-    <TextView
-        android:id="@+id/titre"
-        android:layout_width="wrap_content"
-        android:layout_height="40dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignStart="@+id/imageHumidite"
-        android:layout_marginTop="21dp"
-        android:layout_toStartOf="@+id/statusData"
-        android:text="Refrig 1"
-        android:textAlignment="center"
-        android:textSize="30sp" />
+                android:text="satus"
+                />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+
+
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:weightSum="3"
+        android:orientation="vertical">
+        <Button
+            android:id="@+id/buttAlertes"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Alertes"
+            android:layout_marginTop="25dp"
+            />
+
+        <Button
+            android:id="@+id/butCaract"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Caractéristiques" />
+
+        <Button
+            android:id="@+id/butProd"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Produits" />
+    </LinearLayout>
+</LinearLayout>
+
+
+
+
 
 
 </RelativeLayout>
