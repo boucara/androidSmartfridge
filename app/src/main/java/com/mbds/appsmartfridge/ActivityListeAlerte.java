@@ -12,7 +12,6 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.Switch;
 import android.widget.TextView;
 
 import java.util.ArrayList;
@@ -45,7 +44,7 @@ public class ActivityListeAlerte extends AppCompatActivity {
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(ActivityListeAlerte.this,ActivityAddAlerte.class);
+                Intent intent = new Intent(ActivityListeAlerte.this,ActivityChoixAlerte.class);
                 startActivityForResult(intent,ok_ann);
             }
         });

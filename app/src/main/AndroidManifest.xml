@@ -35,7 +35,13 @@
         <activity android:name=".ActivityAddAlerte" />
         <activity android:name=".AProposActivity" />
         <activity android:name=".ContacterNousActivity" />
-        <activity android:name=".ActivityCaracteristiques"></activity>
+        <activity android:name=".ActivityCaracteristiques" />
+        <activity android:name=".ActivityChoixAlerte" />
+        <activity android:name=".ActivityTemperature" />
+        <activity android:name=".ActivityDecomposition" />
+        <activity android:name=".ActivityPorte" />
+        <activity android:name=".ActivityPeremption" />
+        <activity android:name=".ActivityHygrometrie"></activity>
     </application>
 
 </manifest>

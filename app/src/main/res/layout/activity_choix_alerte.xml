@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical" >
+
+    <RadioGroup
+        android:id="@+id/radioAlerte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="40dp"
+        android:layout_marginRight="40dp"
+        android:layout_gravity="center">
+
+        <RadioButton
+            android:id="@+id/radioTemp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_temp"
+            android:checked="true"
+            android:layout_marginTop="40dp"
+           />
+
+
+        <RadioButton
+            android:id="@+id/radioDecomp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_decomp"
+           />
+        <RadioButton
+            android:id="@+id/radioHygro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_hygro"
+           />
+        <RadioButton
+            android:id="@+id/radioPorte"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_porte"
+            />
+        <RadioButton
+            android:id="@+id/radioPeremp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/radio_peremp"
+           />
+
+    </RadioGroup>
+
+    <Button
+        android:id="@+id/btnValider"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/btn_valider"
+        android:layout_gravity="center"/>
+
+</LinearLayout>

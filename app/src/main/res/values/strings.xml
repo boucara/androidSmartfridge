@@ -12,5 +12,12 @@
     <string name="demo_min_label">Min</string>
     <string name="demo_max_label">Max</string>
 
+    <string name="radio_temp">Temperature</string>
+    <string name="radio_decomp">Décomposition</string>
+    <string name="radio_peremp">Péremption</string>
+    <string name="radio_hygro">Hygrométrie</string>
+    <string name="radio_porte">Porte</string>
+    <string name="btn_valider">Valider</string>
+
 
 </resources>
