@@ -1,5 +1,6 @@
 package com.mbds.appsmartfridge.model;
 
+import android.app.ProgressDialog;
 import android.graphics.Bitmap;
 
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class Produit implements Serializable {
     public String cat;
     public transient Bitmap image;
     String date_ajout;
+    public Produit(){}
 
     public Produit(int id, int belongs, String _n, String _c){
         this.id=id;

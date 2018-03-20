@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="15dp">
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" android:orientation="vertical"
+        android:weightSum="3">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="2">
+            <TextView
+                android:id="@+id/titre"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+
+                android:text="My Produit 1"
+                android:textAlignment="center"
+                android:textSize="28sp" />
+            <ImageView
+                android:id="@+id/im"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_imagecadre_black_24dp"
+                />
+        </LinearLayout>
+        <LinearLayout
+            android:gravity="center"
+            android:layout_marginTop="50dp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:weightSum="3">
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" android:weightSum="2">
+                <TextView
+                    android:id="@+id/textViewCat"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Categorie:"
+                    />
+                <TextView
+                    android:id="@+id/categorieData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="cat"
+                    android:layout_marginStart="@dimen/fab_margin"/>
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" android:weightSum="2">
+                <TextView
+                    android:id="@+id/textViewDatePr"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date péremption:"
+                    android:layout_marginTop="17dp"
+                    />
+                <TextView
+                    android:id="@+id/datePremtionData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="datee"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginStart="@dimen/fab_margin"
+                    />
+            </LinearLayout>
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" android:weightSum="2">
+                <TextView
+                    android:id="@+id/textViewDateAj"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date ajout:"
+                    android:layout_marginTop="17dp"
+                    />
+
+                <TextView
+                    android:id="@+id/dateAjoutData"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="datee"
+                    android:layout_marginTop="17dp"
+                    android:layout_marginStart="@dimen/fab_margin"/>
+            </LinearLayout>
+        </LinearLayout>
+        <LinearLayout
+
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:orientation="vertical"
+            android:weightSum="1"
+            android:layout_marginTop="100dp">
+
+            <Button
+                android:id="@+id/buttonRetirer"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:layout_marginBottom="42dp"
+                android:text="Retirer"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>
+
+
