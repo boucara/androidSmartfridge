@@ -23,7 +23,7 @@ public class ActivityDecomposition extends AppCompatActivity {
 
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser) {
                 progressChangedValue = progress;
-                seektext.setText("temps de décomposition :" + progressChangedValue+"%");
+                seektext.setText(" décomposition :" + progressChangedValue);
             }
 
             public void onStartTrackingTouch(SeekBar seekBar) {
