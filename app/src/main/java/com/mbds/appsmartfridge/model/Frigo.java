@@ -23,6 +23,7 @@ public class Frigo implements Serializable {
     public String garantie;
     public String dimensions;
     public String marque;
+    private ConfigAlertes conf;
 
 
     public Frigo(int id, String frigonom,String frigoStatus, int temperature, int humidite, String decomposition, String garantie, String dimensions, String marque) {
@@ -36,6 +37,14 @@ public class Frigo implements Serializable {
         this.garantie = garantie;
         this.dimensions = dimensions;
         this.marque = marque;
+    }
+
+    public ConfigAlertes getConf() {
+        return conf;
+    }
+
+    public void setConf(ConfigAlertes conf) {
+        this.conf = conf;
     }
 
     public int getId() {

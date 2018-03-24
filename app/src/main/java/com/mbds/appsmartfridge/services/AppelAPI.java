@@ -4,6 +4,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
 
+import com.mbds.appsmartfridge.model.ConfigAlertes;
 import com.mbds.appsmartfridge.model.Frigo;
 import com.mbds.appsmartfridge.oldentities.Event;
 import com.mbds.appsmartfridge.oldentities.Fridge;
@@ -58,8 +59,8 @@ public class AppelAPI {
                 System.out.println("RESPONSE ");
                 List<Measures> measures = response.body();
 
-//                ControleurFridge control = ControleurFridge.getInstance();
-//                control.setMeasuresList(measures);
+                ControllerApplication control = ControllerApplication.getInstance();
+                control.setMesuresList(measures);
                 if(handler != null) {
                     System.out.println("----HANDLER----");
                     Message msg = handler.obtainMessage();
@@ -85,34 +86,36 @@ public class AppelAPI {
 
 
         System.out.println("--- SERIAL ---- " + serial);
-        ControllerApplication control = ControllerApplication.getInstance();
-//        System.out.println("GAZ " + control.getFridge().getGas_alert_max());
-//        Call<Fridge> repos = apiService.updateFridge(serial,
-//                control.getFridge().getTemp_alert_min(),
-//                control.getFridge().getTemp_alert_max(),
-//                control.getFridge().getHygro_alert_max(),
-//                control.getFridge().getOpen_alert_time(),
-//                control.getFridge().getGas_alert_max(),
-//                control.getFridge().isGas_alert_on(),
-//                control.getFridge().isOpen_alert_on(),
-//                control.getFridge().isTemp_alert_min_on(),
-//                control.getFridge().isTemp_alert_max_on(),
-//                control.getFridge().isHygro_alert_on(),
-//                control.getFridge().getRemind_me_after());
 
-//        repos.enqueue(new Callback<Fridge>() {
-//            @Override
-//            public void onResponse(Call<Fridge> call, Response<Fridge> response) {
-//                Fridge f = response.body();
-//                System.out.println("----- MAJ OK -----" + f.getGas_alert_max());
-//            }
-//
-//            @Override
-//            public void onFailure(Call<Fridge> call, Throwable t) {
-//                System.err.println("----- MAJ NOK ----- " );
-//                t.printStackTrace();
-//            }
-//        });
+        ControllerApplication control = ControllerApplication.getInstance();
+        ConfigAlertes conf = control.getActualFrigo().getConf();
+        System.out.println("GAZ " + conf.getGas_alert_max());
+        Call<Fridge> repos = apiService.updateFridge(serial,
+                conf.getTemp_alert_min(),
+                conf.getTemp_alert_max(),
+                conf.getHydro_alert_max(),
+                conf.getHopen_alert_time(),
+                conf.getGas_alert_max(),
+                conf.isGas_alert_on(),
+                conf.isOpen_alert_on(),
+                conf.isTemp_alert_min_on(),
+                conf.isTemp_alert_max_on(),
+                conf.isHygro_alert_on(),
+                conf.getRemind_me_after());
+
+        repos.enqueue(new Callback<Fridge>() {
+            @Override
+            public void onResponse(Call<Fridge> call, Response<Fridge> response) {
+                Fridge f = response.body();
+                System.out.println("----- MAJ OK -----" + f.getGas_alert_max());
+            }
+
+            @Override
+            public void onFailure(Call<Fridge> call, Throwable t) {
+                System.err.println("----- MAJ NOK ----- " );
+                t.printStackTrace();
+            }
+        });
     }
 
     public void createFridge(String serial){
@@ -135,8 +138,8 @@ public class AppelAPI {
         });
     }
 
-    public void sendDataSensors(String serial, Measures measures){
-        Call<Measures> repos = apiService.sendMeasures(serial, measures);
+    public void getDataSensors(String serial){
+        Call<Measures> repos = apiService.Get_Fridge_Measures_last(serial);
         repos.enqueue(new Callback<Measures>() {
             @Override
             public void onResponse(Call<Measures> call, Response<Measures> response) {

@@ -55,13 +55,11 @@ public interface APIService {
     Call<List<Measures>> Get_Fridge_Measures(@Path("serial")String serial, @Query("from") String from , @Query("to") String to );
 
     @GET("/fridges/{serial}/measures/last")
-    Object Get_Fridge_Measures_last(@Path("serial")String serial);
+    Call<Measures> Get_Fridge_Measures_last(@Path("serial")String serial);
 
     @GET("/fridges/{serial}/events")
     Call<List<Event>> Get_Fridge_Events(@Path("serial")String serial, @Query("from") String from , @Query("to") String to );
 
-    @POST("/fridges/{serial}/measures")
-    Call<Measures> sendMeasures(@Path("serial")String serial, @Body Measures measures);
 
     @POST("/fridges/{serial}/events")
     Call<Event> sendEvents(@Path("serial")String serial, @Body Event event);

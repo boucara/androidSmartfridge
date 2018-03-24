@@ -1,6 +1,9 @@
 package com.mbds.appsmartfridge.utils;
 
 import com.mbds.appsmartfridge.model.Frigo;
+import com.mbds.appsmartfridge.oldentities.Measures;
+
+import java.util.List;
 
 /**
  * Created by Tom on 22/03/2018.
@@ -10,6 +13,16 @@ public class ControllerApplication {
 
     private static ControllerApplication lock;
     private Frigo actualFrigo;
+
+    public List<Measures> getMesuresList() {
+        return mesuresList;
+    }
+
+    public void setMesuresList(List<Measures> mesuresList) {
+        this.mesuresList = mesuresList;
+    }
+
+    private List<Measures> mesuresList;
 
     public static ControllerApplication getInstance(){
         if(lock == null){
