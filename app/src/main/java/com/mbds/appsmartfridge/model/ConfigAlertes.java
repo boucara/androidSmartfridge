@@ -17,6 +17,20 @@ public class ConfigAlertes {
     boolean hygro_alert_on;
     int remind_me_after;
 
+    public ConfigAlertes(int gas_alert_max, int temp_alert_min, int temp_alert_max, int hydro_alert_max, int hopen_alert_time, boolean gas_alert_on, boolean open_alert_on, boolean temp_alert_min_on, boolean temp_alert_max_on, boolean hygro_alert_on, int remind_me_after) {
+        this.gas_alert_max = gas_alert_max;
+        this.temp_alert_min = temp_alert_min;
+        this.temp_alert_max = temp_alert_max;
+        this.hydro_alert_max = hydro_alert_max;
+        this.hopen_alert_time = hopen_alert_time;
+        this.gas_alert_on = gas_alert_on;
+        this.open_alert_on = open_alert_on;
+        this.temp_alert_min_on = temp_alert_min_on;
+        this.temp_alert_max_on = temp_alert_max_on;
+        this.hygro_alert_on = hygro_alert_on;
+        this.remind_me_after = remind_me_after;
+    }
+
     public int getGas_alert_max() {
         return gas_alert_max;
     }

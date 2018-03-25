@@ -39,4 +39,10 @@ public class ControllerApplication {
         this.actualFrigo = actualFrigo;
     }
 
+    public void setMesuresFrigo(Measures measures) {
+        actualFrigo.setTemperature((int)measures.getTemp_1());
+        actualFrigo.setHumidite((int)measures.getHygro());
+        actualFrigo.setDecomposition(""+(int)measures.getGas());
+        actualFrigo.setFrigoStatus("Connecté");
+    }
 }

@@ -28,9 +28,7 @@ public class FrigoAdapterHelper implements ListAdapter {
     //Button bDisconnect;
     public FrigoAdapterHelper(Context ctx) {
         this.LF = new ArrayList<>();
-        LF.add(new Frigo(1,"Samsung SMARTF","Connecté",4,50,"decomp","samsung garantie 6a","180cm x 50cm x 60cm","Samsung"));
-        LF.add(new Frigo(2,"LG SMRTF","Déconnecté",5,50,"decomp","lg garantie 5a","180cm x 50cm x 60cm","LG"));
-        LF.add(new Frigo(3,"BEKO FSMRT","Connecté",6,50,"decomp","beko garantie 2a","180cm x 50cm x 60cm","Beko"));
+        LF.add(new Frigo(1,"dev","Connecté",0,0,"0","samsung garantie 6a","180cm x 50cm x 60cm","Samsung"));
         this.ctx = ctx;
     }
 

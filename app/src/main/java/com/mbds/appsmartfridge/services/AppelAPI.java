@@ -30,7 +30,7 @@ public class AppelAPI {
 
     APIService apiService;
 
-    public AppelAPI(Frigo fridge){
+    public AppelAPI(){
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl(APIService.ENDPOINT)
                 .addConverterFactory(GsonConverterFactory.create())
@@ -124,9 +124,10 @@ public class AppelAPI {
         repos.enqueue(new Callback<Fridge>() {
             @Override
             public void onResponse(Call<Fridge> call, Response<Fridge> response) {
-                Fridge frigo = response.body();
-//                ControleurFridge control = ControleurFridge.getInstance();
-//                control.setFridge((Fridge) frigo);
+                Fridge fridge = response.body();
+                Frigo frigo = new Frigo(fridge);
+
+                ControllerApplication.getInstance().setActualFrigo(frigo);
                 System.out.println("CREATION FRIGO  " + frigo);
             }
 
@@ -143,12 +144,15 @@ public class AppelAPI {
         repos.enqueue(new Callback<Measures>() {
             @Override
             public void onResponse(Call<Measures> call, Response<Measures> response) {
-                System.out.println("sendDataSensors success");
+                Measures measures = response.body();
+
+                ControllerApplication control = ControllerApplication.getInstance();
+                control.setMesuresFrigo(measures);
             }
 
             @Override
             public void onFailure(Call<Measures> call, Throwable t) {
-                System.err.println("sendDataSensors failed");
+
                 t.printStackTrace();
             }
         });

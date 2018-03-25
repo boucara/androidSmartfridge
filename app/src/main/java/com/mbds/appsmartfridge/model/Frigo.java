@@ -2,6 +2,8 @@ package com.mbds.appsmartfridge.model;
 
 import android.graphics.Bitmap;
 
+import com.mbds.appsmartfridge.oldentities.Fridge;
+
 import java.io.Serializable;
 import java.util.Date;
 import java.util.Calendar;
@@ -25,6 +27,10 @@ public class Frigo implements Serializable {
     public String marque;
     private ConfigAlertes conf;
 
+    public Frigo(Fridge fridge){
+        conf = new ConfigAlertes(fridge.getGas_alert_max(), fridge.getTemp_alert_min(), fridge.getTemp_alert_max(), fridge.getHygro_alert_max(), fridge.getOpen_alert_time(), fridge.isGas_alert_on(), fridge.isOpen_alert_on(), fridge.isTemp_alert_min_on(), fridge.isTemp_alert_max_on(), fridge.isHygro_alert_on(), fridge.getRemind_me_after());
+        frigoName=fridge.getSerial();
+    }
 
     public Frigo(int id, String frigonom,String frigoStatus, int temperature, int humidite, String decomposition, String garantie, String dimensions, String marque) {
         this.id=id;
