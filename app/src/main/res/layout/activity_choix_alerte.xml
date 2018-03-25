@@ -19,7 +19,7 @@
             android:text="@string/radio_temp"
             android:checked="true"
             android:layout_marginTop="40dp"
-           />
+            android:buttonTint="@color/my_color"/>
 
 
         <RadioButton
@@ -27,25 +27,25 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_decomp"
-           />
+            android:buttonTint="@color/my_color"/>
         <RadioButton
             android:id="@+id/radioHygro"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_hygro"
-           />
+            android:buttonTint="@color/my_color"/>
         <RadioButton
             android:id="@+id/radioPorte"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_porte"
-            />
+            android:buttonTint="@color/my_color"/>
         <RadioButton
             android:id="@+id/radioPeremp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/radio_peremp"
-           />
+            android:buttonTint="@color/my_color"/>
 
     </RadioGroup>
 
