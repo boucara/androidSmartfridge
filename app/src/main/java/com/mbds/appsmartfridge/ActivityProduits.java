@@ -74,6 +74,7 @@ public class ActivityProduits extends AppCompatActivity {
             }
         });
 
+
     }
 
     public void initList(){

@@ -1,5 +1,6 @@
 package com.mbds.appsmartfridge;
 
+import android.app.DatePickerDialog;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.graphics.BitmapFactory;
@@ -26,7 +27,9 @@ import org.json.JSONObject;
 
 import java.io.IOException;
 import java.text.SimpleDateFormat;
+import java.util.Calendar;
 import java.util.Date;
+import java.util.Locale;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -45,7 +48,7 @@ public class ActivityAjoutProduit extends AppCompatActivity {
     TextView textViewDatePr; //textViewDatePrempt
     TextView textViewDateAj; //textViewDateAjoutProd
 
-    DatePicker datePremtionData; //datePremtionDataPicker
+    EditText datePremtionData; //datePremtionDataPicker
     TextView dateAjoutData; //dateAjoutDataProd
 
     ImageView img; //imgProd
@@ -57,8 +60,7 @@ public class ActivityAjoutProduit extends AppCompatActivity {
     private static final String TAG_URL_IMG = "image_url";
     private static final String TAG_INGREDIENTS = "ingredients_text_fr";
     private static final String TAG_CATEGORIES = "categories";
-
-
+    final Calendar myCalendar = Calendar.getInstance();
 
 
     @Override
@@ -73,7 +75,7 @@ public class ActivityAjoutProduit extends AppCompatActivity {
         textViewDateAj = (TextView)findViewById(R.id.textViewDateAjoutProd);
         textViewDatePr = (TextView)findViewById(R.id.textViewDatePrempt);
         bAjout = (Button)findViewById(R.id.buttonAjouterProduit);
-        datePremtionData = (DatePicker)findViewById(R.id.datePremtionDataPicker);
+        datePremtionData = (EditText) findViewById(R.id.datePremtionDataPicker);
         buttonScan = (Button)findViewById(R.id.buttonScannerProduit);
         qrScan = new IntentIntegrator(this);
         Intent i = getIntent();
@@ -83,7 +85,46 @@ public class ActivityAjoutProduit extends AppCompatActivity {
                 qrScan.initiateScan();
             }
         });
+        bAjout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(getApplicationContext(),"Produit ajouté!",Toast.LENGTH_LONG);
+            }
+        });
 
+
+       final DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener() {
+
+            @Override
+            public void onDateSet(DatePicker view, int year, int monthOfYear,
+                                  int dayOfMonth) {
+                // TODO Auto-generated method stub
+                myCalendar.set(Calendar.YEAR, year);
+                myCalendar.set(Calendar.MONTH, monthOfYear);
+                myCalendar.set(Calendar.DAY_OF_MONTH, dayOfMonth);
+                updateLabel();
+            }
+
+        };
+        datePremtionData.setOnClickListener(new View.OnClickListener() {
+
+            @Override
+            public void onClick(View v) {
+                // TODO Auto-generated method stub
+                new DatePickerDialog(ActivityAjoutProduit.this, date, myCalendar
+                        .get(Calendar.YEAR), myCalendar.get(Calendar.MONTH),
+                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
+            }
+        });
+
+
+
+    }
+    private void updateLabel() {
+        String myFormat = "dd/MM/yyyy"; //In which you need put here
+        SimpleDateFormat sdf = new SimpleDateFormat(myFormat, Locale.US);
+
+        datePremtionData.setText(sdf.format(myCalendar.getTime()));
     }
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         IntentResult result = IntentIntegrator.parseActivityResult(requestCode, resultCode, data);
@@ -114,8 +155,8 @@ public class ActivityAjoutProduit extends AppCompatActivity {
             super.onPreExecute();
 
             dialog = new ProgressDialog(ActivityAjoutProduit.this);
-            dialog.setTitle("Hey Wait Please...");
-            dialog.setMessage("I am getting your JSON");
+            dialog.setTitle("Veuillez ptientez...");
+            dialog.setMessage("Recupération des informations pour le produit scanné");
             dialog.show();
         }
 
@@ -167,8 +208,8 @@ public class ActivityAjoutProduit extends AppCompatActivity {
             categorieData.setText(newProd.getCat());
             nom.setText(newProd.getNom());
 
-            Toast.makeText(getApplicationContext(),"success",Toast.LENGTH_LONG);
             Log.i("SUCCEES=========",URL);
+
 
         }
     }

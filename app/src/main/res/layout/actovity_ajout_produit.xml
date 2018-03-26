@@ -95,15 +95,16 @@
                 <View
                     android:layout_width="0dp"
                     android:layout_height="0dp"
-                    android:layout_weight="3"
+                    android:layout_weight="5.2"
                     />
-                <DatePicker
+                <EditText
                     android:id="@+id/datePremtionDataPicker"
-                    android:layout_width="100dp"
-                    android:layout_height="30dp"
-                    android:text="datee"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Date"
                     android:layout_marginTop="17dp"
-                    android:layout_marginStart="@dimen/fab_margin"
+                    android:layout_marginStart="28dp"
+                    android:focusable="false"
                     />
             </LinearLayout>
             <LinearLayout
@@ -127,7 +128,6 @@
                     android:id="@+id/dateAjoutDataProd"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="datee"
                     android:layout_marginTop="17dp"
                     android:layout_marginStart="@dimen/fab_margin"/>
             </LinearLayout>
