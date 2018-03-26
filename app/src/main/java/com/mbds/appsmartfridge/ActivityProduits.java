@@ -39,6 +39,7 @@ public class ActivityProduits extends AppCompatActivity {
     ListView listProds;
     TextView count;
     ArrayList<Produit> LP = new ArrayList<>();
+    // deplacé dans ActivityAjoutProduit
     Button bAjout;
     Button buttonScan;
     private IntentIntegrator qrScan;
@@ -50,6 +51,7 @@ public class ActivityProduits extends AppCompatActivity {
     private static final String TAG_NAME_P="generic_name";
     private static final String TAG_URL_IMG="image_url";
     private static final String TAG_INGREDIENTS = "ingredients_text_fr";
+    //
     JSONArray item_code = null;
     JSONObject code=null;
     private static final String url_test = "https://fr.openfoodfacts.org/api/v0/produit/3029330003533.json";
@@ -89,6 +91,14 @@ public class ActivityProduits extends AppCompatActivity {
 
         buttonScan=(Button) findViewById(R.id.Scan);
         bAjout=(Button) findViewById(R.id.AjoutProd);
+        bAjout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(getApplicationContext(),ActivityAjoutProduit.class);
+                startActivity(i);
+            }
+        });
+        //deplacé dans ActivityAjoutProduit
         qrScan = new IntentIntegrator(this);
         buttonScan.setOnClickListener(new View.OnClickListener() {
             @Override

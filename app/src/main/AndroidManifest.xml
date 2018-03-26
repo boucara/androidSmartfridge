@@ -31,11 +31,12 @@
             android:parentActivityName=".ActivityAccueil" />
         <activity
             android:name=".ActivityProduits"
-            android:parentActivityName=".ActivityAccueil" />
+            android:parentActivityName=".ActivityFrigo" />
         <activity
             android:name=".ActivityFrigo"
             android:parentActivityName=".ActivityFrigos" />
         <activity android:name=".ActivityProduit" />
+        <activity android:name=".ActivityAjoutProduit"></activity>
         <activity android:name=".ActivityAddAlerte" />
         <activity android:name=".AProposActivity" />
         <activity android:name=".ContacterNousActivity" />
