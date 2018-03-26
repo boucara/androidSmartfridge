@@ -25,6 +25,8 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.io.IOException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
 
 import okhttp3.OkHttpClient;
 import okhttp3.Request;
@@ -63,11 +65,15 @@ public class ActivityAjoutProduit extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.actovity_ajout_produit);
+        dateAjoutData = (TextView) findViewById(R.id.dateAjoutDataProd);
          textViewNomProd = (TextView)findViewById(R.id.textViewNameProd);
          nom = (EditText)findViewById(R.id.titreProduit);
          categorieData = (EditText) findViewById(R.id.categorieDataProd);
          textViewCat = (TextView)findViewById(R.id.textViewCatProd);
+        textViewDateAj = (TextView)findViewById(R.id.textViewDateAjoutProd);
+        textViewDatePr = (TextView)findViewById(R.id.textViewDatePrempt);
         bAjout = (Button)findViewById(R.id.buttonAjouterProduit);
+        datePremtionData = (DatePicker)findViewById(R.id.datePremtionDataPicker);
         buttonScan = (Button)findViewById(R.id.buttonScannerProduit);
         qrScan = new IntentIntegrator(this);
         Intent i = getIntent();
@@ -131,7 +137,7 @@ public class ActivityAjoutProduit extends AppCompatActivity {
                                 Log.i("JSON OBJ LENGTH > 0====",objectJson.getString("packaging"));
                                 String nimgurl= objectJson.getString(TAG_URL_IMG);
                                 String nnamep = objectJson.getString(TAG_NAME_P);
-                                String ncategories = objectJson.getString(TAG_CATEGORIES);
+                                String  ncategories = objectJson.getString(TAG_CATEGORIES);
                                 newProd = new Produit(8,1,nnamep,ncategories);
                             }
                             else{
@@ -153,6 +159,9 @@ public class ActivityAjoutProduit extends AppCompatActivity {
         }
         @Override
         protected void onPostExecute(Void aVoid) {
+            SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy HH:mm:ss");
+            String currentDateandTime = sdf.format(new Date());
+            dateAjoutData.setText(currentDateandTime);
             super.onPostExecute(aVoid);
             dialog.dismiss();
             categorieData.setText(newProd.getCat());
@@ -170,7 +179,6 @@ public class ActivityAjoutProduit extends AppCompatActivity {
         try {
             reponse = client.newCall(request).execute();
         }
-
 
         //return new JSONObject(response.body().string());
         catch (IOException e)

@@ -133,6 +133,11 @@
             </LinearLayout>
 
         </LinearLayout>
+        <View
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_weight="0.5"
+            />
         <LinearLayout
             android:gravity="center"
             android:layout_width="match_parent"
