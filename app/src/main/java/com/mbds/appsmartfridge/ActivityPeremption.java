@@ -2,11 +2,16 @@ package com.mbds.appsmartfridge;
 
 import android.app.DatePickerDialog;
 import android.app.Dialog;
+import android.content.Context;
+import android.content.DialogInterface;
+import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
+import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -20,6 +25,9 @@ public class ActivityPeremption extends AppCompatActivity {
     private TextView dateView ;
     private Button  buttonDate;
     private int year, month, day;
+    final Context context=this;
+    Button ajout;
+    EditText nomAlerte;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -27,6 +35,7 @@ public class ActivityPeremption extends AppCompatActivity {
         setContentView(R.layout.activity_peremption);
 
         buttonDate=(Button)findViewById(R.id.buttondate);
+        nomAlerte=(EditText)findViewById(R.id.nom);
 
 
         dateView = (TextView) findViewById(R.id.textView3);
@@ -36,6 +45,45 @@ public class ActivityPeremption extends AppCompatActivity {
         month = calendar.get(Calendar.MONTH);
         day = calendar.get(Calendar.DAY_OF_MONTH);
         showDate(year, month+1, day);
+        ajout=(Button) findViewById(R.id.ajout) ;
+        ajout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+
+                if(nomAlerte.getText().toString().matches(" ") || nomAlerte.getText().toString().isEmpty() || nomAlerte.getText().toString().equals("\t")){
+                    Toast.makeText(context, "vous devez renseigner le nom de l'alerte!", Toast.LENGTH_LONG).show();
+                    return;
+                }
+                else{
+
+                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(context);
+                    alertDialogBuilder.setTitle("Ajout alerte");
+                    alertDialogBuilder
+                            .setMessage("voulez vous confirmer?")
+                            .setCancelable(false)
+                            .setPositiveButton("Oui", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    Intent intent = new Intent(ActivityPeremption.this,ActivityListeAlerte.class);
+                                    intent.putExtra("name",nomAlerte.getText().toString());
+                                    setResult(1, intent);
+                                    finish();
+                                }
+                            })
+                            .setNegativeButton("Non", new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int id) {
+                                    dialog.cancel();
+                                }
+                            });
+                    AlertDialog alertDialog = alertDialogBuilder.create();
+                    alertDialog.show();
+                }
+
+
+
+
+            }
+        });
     }
 
     @SuppressWarnings("deprecation")
@@ -71,5 +119,6 @@ public class ActivityPeremption extends AppCompatActivity {
         dateView.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
+
 
 }
